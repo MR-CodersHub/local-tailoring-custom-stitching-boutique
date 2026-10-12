@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#702D42"/>
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="#D9C19A" stroke-width="1.5" opacity="0.5"/>
+  <text x="32" y="43" font-family="Georgia, 'Playfair Display', serif" font-size="30" font-weight="700" fill="#D9C19A" text-anchor="middle" letter-spacing="0.5">M</text>
+  <rect x="26" y="47" width="12" height="2" fill="#D9C19A" opacity="0.9"/>
+  <rect x="29.2" y="44.2" width="5.6" height="5.6" transform="rotate(45 32 47)" fill="#D9C19A" opacity="0.9" stroke="#702D42" stroke-width="0.8"/>
+</svg>

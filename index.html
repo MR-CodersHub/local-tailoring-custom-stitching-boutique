@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maison Elite – Premium custom tailoring, bespoke stitching and alterations boutique. Crafted with elegance, fitted to perfection.">
+<title>Maison Élite | Premium Custom Tailoring Boutique</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.hero-slide.active{opacity:1}
+.hero-slider{position:relative;height:100vh;overflow:hidden}
+.gallery-scroll{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.feature-strip{background:var(--burgundy);padding:1.5rem 0}
+.feature-item{display:flex;align-items:center;gap:.875rem;color:white}
+.feature-icon{font-size:1.5rem;flex-shrink:0}
+.craft-wrap{position:relative}
+.craft-img{border-radius:var(--radius-xl);overflow:hidden;position:relative;height:560px;box-shadow:var(--shadow-lg)}
+.craft-img img{width:100%;height:100%;object-fit:cover;display:block}
+.craft-float{position:absolute;bottom:1.75rem;right:1.75rem;background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));color:white;padding:1.35rem 1.9rem;border-radius:var(--radius-lg);text-align:center;box-shadow:var(--shadow-xl);border:1px solid rgba(255,255,255,0.2);min-width:150px;z-index:2}
+.craft-float-num{font-family:var(--font-serif);font-size:2.5rem;font-weight:700;line-height:1}
+.craft-float-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-top:.35rem;font-weight:600}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;text-align:left}
+.story-stats .stat-item{text-align:left}
+.story-eyebrow{justify-content:flex-start}
+.story-eyebrow::after{display:none}
+.story-ornament{justify-content:flex-start;margin:.75rem 0 0}
+.cta-section{background:linear-gradient(135deg,var(--charcoal) 0%,var(--burgundy-dark) 60%,var(--burgundy) 100%);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='38' fill='none' stroke='rgba(250,246,240,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;background-size:80px}
+.stats-band{background:linear-gradient(135deg,rgba(112,45,66,0.04),rgba(197,143,157,0.06));border-top:1px solid rgba(112,45,66,0.1);border-bottom:1px solid rgba(112,45,66,0.1)}
+.testimonial-carousel{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
+@media(max-width:991px){.gallery-scroll{grid-template-columns:repeat(2,1fr)}.testimonial-carousel{grid-template-columns:1fr;max-width:560px;margin-inline:auto}.story-grid{grid-template-columns:1fr;gap:3rem}.craft-img{height:420px}.craft-float{bottom:1.25rem;right:1.25rem;padding:1.1rem 1.5rem}.story-stats .stat-item{text-align:center}}
+@media(max-width:576px){.gallery-scroll{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="navbar-logo">Maison <span>Élite</span></div>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Niche Styles</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+      <a href="login.html" class="nav-login"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="navbar-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo" style="color:var(--charcoal)">Maison <span>Élite</span></div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-nav-link">Home <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="home2.html" class="mobile-nav-link">Niche Styles <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="about.html" class="mobile-nav-link">About Us <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="services.html" class="mobile-nav-link">Services <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="blog.html" class="mobile-nav-link">Blog <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="contact.html" class="mobile-nav-link">Contact <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="login.html" class="mobile-nav-link">Login / Register <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+  </ul>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Appointment</a><a href="login.html" class="btn btn-secondary" style="width:100%;justify-content:center">Login / Register</a></div>
+</div>
+
+<main>
+<!-- ═══════════ SECTION 1: HERO SLIDER ═══════════ -->
+<section class="hero-slider" aria-label="Hero">
+  <div class="hero-slide active">
+    <div class="hero-bg"><img src="assets/images/hero_tailoring.jpg" alt="Premium tailoring boutique interior" loading="eager"></div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <div class="hero-bg"><img src="assets/images/bridal_fitting.jpg" alt="Bridal fitting session" loading="lazy"></div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <div class="hero-bg"><img src="assets/images/ethnic_wear.jpg" alt="Ethnic wear collection" loading="lazy"></div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content container" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;z-index:2">
+    <div style="max-width:760px;margin:0 auto;padding-top:80px;display:flex;flex-direction:column;align-items:center">
+      <div class="hero-badge animate-fade-up"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> Est. 2008 · Mumbai's Finest Atelier</div>
+      <h1 class="hero-title animate-fade-up animate-delay-1">Crafted for <em>Your</em><br>Unique Story</h1>
+      <p class="hero-subtitle animate-fade-up animate-delay-2" style="text-align:center;margin-inline:auto">From bridal couture to everyday elegance — every garment is a masterpiece of precision, passion and personalized craftsmanship.</p>
+      <div class="hero-actions animate-fade-up animate-delay-3" style="justify-content:center">
+        <a href="contact.html" class="btn btn-primary btn-lg">Book a Fitting <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="services.html" class="btn btn-light btn-lg">Explore Services</a>
+      </div>
+      <div class="slider-controls">
+        <button class="slider-dot active" aria-label="Slide 1"></button>
+        <button class="slider-dot" aria-label="Slide 2"></button>
+        <button class="slider-dot" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator"><div class="scroll-wheel"></div>Scroll</div>
+</section>
+
+<!-- ═══════════ SECTION 2: FEATURE STRIP ═══════════ -->
+<section class="feature-strip">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem">
+      <div class="feature-item"><div class="feature-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div><div><div style="font-weight:700;font-size:.9rem">Bespoke Tailoring</div><div style="font-size:.8rem;opacity:.8">Custom-fitted to your body</div></div></div>
+      <div class="feature-item"><div class="feature-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9l4-6z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></div><div><div style="font-weight:700;font-size:.9rem">Premium Fabrics</div><div style="font-size:.8rem;opacity:.8">Sourced from finest mills</div></div></div>
+      <div class="feature-item"><div class="feature-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div><div style="font-weight:700;font-size:.9rem">On-Time Delivery</div><div style="font-size:.8rem;opacity:.8">Promise kept, always</div></div></div>
+      <div class="feature-item"><div class="feature-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg></div><div><div style="font-weight:700;font-size:.9rem">18+ Years of Excellence</div><div style="font-size:.8rem;opacity:.8">Trusted by 5000+ clients</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 3: TAILORING GALLERY ═══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Our Portfolio</div>
+      <h2 class="section-title">A Tapestry of <em style="font-style:italic;color:var(--burgundy)">Masterpieces</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">Each creation is a conversation between our master tailors and the individual — where fabric meets form.</p>
+    </div>
+    <div class="gallery-scroll">
+      <div class="gallery-item reveal reveal-delay-1" data-lightbox="assets/images/boutique_rail.jpg" data-category="bespoke">
+        <img src="assets/images/boutique_rail.jpg" alt="Curated neutral-tone garments on boutique rail" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-info-title">Classic Atelier</div><div class="gallery-info-tag">Bespoke Studio</div></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-lightbox="assets/images/bridal_gown_red.jpg" data-category="bridal">
+        <img src="assets/images/bridal_gown_red.jpg" alt="Bride twirling in red bridal gown" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-info-title">Bridal Fitting</div><div class="gallery-info-tag">Couture Bridal</div></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3" data-lightbox="assets/images/ethnic_saree_pink.jpg" data-category="ethnic">
+        <img src="assets/images/ethnic_saree_pink.jpg" alt="Woman draped in pink silk saree" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-info-title">Ethnic Collection</div><div class="gallery-info-tag">Traditional Craftsmanship</div></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-4" data-lightbox="assets/images/fabric_collection.jpg" data-category="fabric">
+        <img src="assets/images/fabric_collection.jpg" alt="Fabric collection" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-info-title">Premium Fabrics</div><div class="gallery-info-tag">Luxury Textiles</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="services.html" class="btn btn-secondary btn-lg">Explore Our Services <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 4: FEATURED SERVICES ═══════════ -->
+<section class="section" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Our Signature <em style="color:var(--burgundy)">Services</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">From a perfectly fitted kurta to a dream wedding lehenga — our services span every garment you could imagine.</p>
+    </div>
+    <div class="grid-3">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><path d="M10 6.5h4l-.8 4.5 3.8 10H7l3.8-10-.8-4.5z"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Bespoke Tailoring</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">From concept to creation — every garment is cut, stitched and finished to your exact body measurements and style vision.</p>
+        <a href="service-detail.html" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="m9.5 8.5-3-4.5 3.5 1.5L12 3l2 2.5L17.5 4l-3 4.5"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Bridal Couture</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">Your wedding day deserves nothing less than perfect. We craft breathtaking lehengas, sarees and wedding gowns with intricate embroidery.</p>
+        <a href="home2.html#bridal" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Blouse Stitching</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">Designer blouses with intricate back designs, mirror work, embroidery and custom cuts. The perfect complement to your saree.</p>
+        <a href="service-detail.html#blouse" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Expert Alterations</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">Breathe new life into your wardrobe. We resize, reshape and restore garments to achieve the ideal fit and silhouette.</p>
+        <a href="service-detail.html#alterations" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Ethnic Wear</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">Traditional salwar kameez, anarkalis, sherwanis and more — crafted with authentic techniques and premium hand-embroidered fabrics.</p>
+        <a href="home2.html#ethnic" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3 3 7l2 4 4-2v12h6V9l4 2 2-4-6-4a3 3 0 0 1-6 0z"/></svg></div>
+        <h3 style="font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem">Office & Formal</h3>
+        <p style="font-size:.9rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem">Command the boardroom in perfectly tailored suits, blazers and formal wear. Power dressing elevated to an art form.</p>
+        <a href="home2.html#office" class="btn btn-secondary btn-sm">Learn More <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 5: CRAFTSMANSHIP STORY ═══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal-left">
+        <div class="craft-wrap">
+          <div class="craft-img">
+            <img src="assets/images/tailor_at_work.jpg" alt="Master tailor at work" loading="lazy">
+          </div>
+          <div class="craft-float">
+            <div class="craft-float-num">18+</div>
+            <div class="craft-float-label">Years of Craft</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-eyebrow story-eyebrow">Our Story</div>
+        <h2 class="section-title" style="text-align:left">Where Thread Meets <em style="color:var(--burgundy)">Soul</em></h2>
+        <div class="ornament story-ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+        <p style="font-size:1rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.5rem">Since 2008, Maison Élite has been the trusted atelier for discerning clients seeking garments that transcend fashion — clothing that tells their personal story.</p>
+        <p style="font-size:1rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:2rem">Founded by master tailor Priya Nair, our studio has grown from a small workshop to Mumbai's most celebrated tailoring boutique — yet our approach remains beautifully intimate.</p>
+        <div class="story-stats">
+          <div class="stat-item"><div class="stat-number" data-count="5000" data-suffix="+">0+</div><div class="stat-label">Happy Clients</div></div>
+          <div class="stat-item"><div class="stat-number" data-count="12000" data-suffix="+">0+</div><div class="stat-label">Garments Made</div></div>
+          <div class="stat-item"><div class="stat-number" data-count="18" data-suffix="+">0+</div><div class="stat-label">Awards Won</div></div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="about.html" class="btn btn-primary btn-lg">Our Full Story <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="contact.html" class="btn btn-secondary btn-lg">Meet the Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 6: TESTIMONIALS + CTA ═══════════ -->
+<section class="section" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Client Love</div>
+      <h2 class="section-title">Stories of <em style="color:var(--burgundy)">Perfect Fit</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">Real stories from real clients — brides, professionals and families who trust us with their most important moments.</p>
+    </div>
+    <div class="testimonial-carousel">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <p class="testimonial-text">"My wedding lehenga from Maison Élite was beyond imagination. Every bead was placed with such care. On my wedding day, I felt like royalty."</p>
+        <div class="testimonial-author"><div class="testimonial-avatar"><img src="assets/images/bridal_gown_red.jpg" alt="Ananya Sharma" loading="lazy" style="object-position:50% 22%"></div><div><div class="testimonial-name">Ananya Sharma</div><div class="testimonial-role">Bride, December 2025</div></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <p class="testimonial-text">"I've tried dozens of tailors across Mumbai. None compare to the precision and artistry at Maison Élite. My blazers fit like a second skin."</p>
+        <div class="testimonial-author"><div class="testimonial-avatar"><img src="assets/images/suit_career.jpg" alt="Rohan Mehta" loading="lazy" style="object-position:50% 18%"></div><div><div class="testimonial-name">Rohan Mehta</div><div class="testimonial-role">Corporate Client</div></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <p class="testimonial-text">"The blouse they stitched for my sister's saree was a work of art. The embroidery, the back design — absolutely flawless. Will always recommend!"</p>
+        <div class="testimonial-author"><div class="testimonial-avatar"><img src="assets/images/ethnic_saree_purple.jpg" alt="Pooja Krishnan" loading="lazy" style="object-position:50% 22%"></div><div><div class="testimonial-name">Pooja Krishnan</div><div class="testimonial-role">Regular Client</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-section section">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <div class="reveal">
+      <div class="hero-badge" style="margin-bottom:1.5rem;display:inline-flex"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> Start Your Bespoke Journey Today</div>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:white;margin-bottom:1.25rem">Ready to Wear <em style="color:var(--champagne)">Your Story?</em></h2>
+      <p style="font-size:1.0625rem;color:rgba(250,246,240,0.8);max-width:540px;margin:0 auto 2.5rem;line-height:1.8">Book a complimentary consultation and let our master tailors create something extraordinary — just for you.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-champagne btn-lg">Book Free Consultation <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="tel:+919876543210" class="btn btn-light btn-lg"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> Call Us Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem" class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Maison <span>Élite</span></div>
+        <p class="footer-desc">Where every stitch tells your story. Premium custom tailoring and bespoke stitching crafted with generations of artistry.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Home</a></li>
+          <li><a href="home2.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Niche Styles</a></li>
+          <li><a href="about.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> About Us</a></li>
+          <li><a href="services.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Services</a></li>
+          <li><a href="blog.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blog</a></li>
+          <li><a href="contact.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-detail.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bespoke Tailoring</a></li>
+          <li><a href="service-detail.html#bridal" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bridal Wear</a></li>
+          <li><a href="service-detail.html#blouse" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blouse Stitching</a></li>
+          <li><a href="service-detail.html#alterations" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Alterations</a></li>
+          <li><a href="home2.html#ethnic" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Ethnic Wear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Visit Us</div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div>12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div>+91 98765 43210</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div><div>hello@maisonelite.in</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div>Mon–Sat: 10am – 8pm</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(250,246,240,0.5)">© 2026 Maison Élite. All rights reserved. Crafted with <svg class="icon" style="width:1em;height:1em;vertical-align:-0.12em;margin:0 .2rem" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> in India.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="login.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Login</a>
+        <a href="coming-soon.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Coming Soon</a>
+        <a href="404.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">404</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="alert"></div>
+<button class="scroll-to-top" aria-label="Scroll to top"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<div class="lightbox"><button class="lightbox-close"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt="Preview"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

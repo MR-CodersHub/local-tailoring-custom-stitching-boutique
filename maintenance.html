@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maison Élite – Temporarily under maintenance. We're perfecting every stitch and will be back shortly.">
+<meta name="robots" content="noindex">
+<title>Under Maintenance | Maison Élite</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+.mt-page{min-height:100vh;display:flex;flex-direction:column;background:linear-gradient(135deg,var(--charcoal) 0%,var(--burgundy-dark) 55%,var(--burgundy) 100%);position:relative;overflow:hidden;color:#FAF6F0}
+.mt-page::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='38' fill='none' stroke='rgba(250,246,240,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat;background-size:80px}
+.mt-page::after{content:'';position:absolute;font-family:var(--font-serif);font-size:clamp(14rem,28vw,26rem);line-height:1;color:rgba(250,246,240,0.04);left:-1rem;bottom:-5rem;transform:rotate(18deg);pointer-events:none}
+.mt-top{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:1.25rem clamp(1.25rem,4vw,3rem)}
+.mt-brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.mt-brand-name{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:#FAF6F0}
+.mt-brand-name span{color:var(--champagne)}
+.mt-main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;padding:1rem clamp(1.25rem,4vw,3rem) 3rem}
+.mt-card{width:100%;max-width:640px;text-align:center;background:rgba(250,246,240,0.06);border:1px solid rgba(250,246,240,0.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:var(--radius-xl);padding:clamp(2rem,5vw,3.5rem);box-shadow:var(--shadow-xl)}
+.mt-icon{width:84px;height:84px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(250,246,240,.12);border:1px solid rgba(250,246,240,.2);display:flex;align-items:center;justify-content:center;font-size:2.5rem;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.mt-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne);background:rgba(232,201,164,.12);border:1px solid rgba(232,201,164,.3);padding:.5rem 1rem;border-radius:var(--radius-pill);margin-bottom:1.25rem}
+.mt-badge .dot{width:8px;height:8px;border-radius:50%;background:#ffc107;box-shadow:0 0 0 0 rgba(255,193,7,.5);animation:pulseY 1.8s infinite}
+@keyframes pulseY{0%{box-shadow:0 0 0 0 rgba(255,193,7,.5)}70%{box-shadow:0 0 0 8px rgba(255,193,7,0)}100%{box-shadow:0 0 0 0 rgba(255,193,7,0)}}
+.mt-title{font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.1;color:#fff;margin-bottom:1rem}
+.mt-title em{font-style:italic;color:var(--champagne)}
+.mt-desc{font-size:.98rem;line-height:1.8;color:rgba(250,246,240,.78);max-width:480px;margin:0 auto 2rem}
+.mt-progress{background:rgba(250,246,240,.12);border-radius:100px;height:10px;overflow:hidden;margin-bottom:.6rem;position:relative}
+.mt-progress-fill{height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--champagne),#fff);transition:width 1.4s ease;box-shadow:0 0 16px rgba(232,201,164,.6)}
+.mt-progress-meta{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,246,240,.82);margin-bottom:2rem}
+.mt-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.mt-contact{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;text-align:left}
+.mt-contact-item{display:flex;align-items:center;gap:.75rem;background:rgba(250,246,240,.07);border:1px solid rgba(250,246,240,.12);border-radius:var(--radius-md);padding:.9rem 1rem;font-size:.85rem;color:rgba(250,246,240,.85);text-decoration:none;transition:all var(--duration-fast)}
+.mt-contact-item:hover{background:rgba(250,246,240,.14);transform:translateY(-2px)}
+.mt-contact-item strong{display:block;font-size:.9rem;color:#fff}
+.mt-contact-item small{color:rgba(250,246,240,.8)}
+.mt-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.25rem clamp(1.25rem,4vw,3rem);border-top:1px solid rgba(250,246,240,.12);font-size:.8rem;color:rgba(250,246,240,.74)}
+.mt-footer a{color:rgba(250,246,240,.8);text-decoration:none}
+.mt-footer a:hover{color:var(--champagne)}
+@media(max-width:576px){.mt-contact{grid-template-columns:1fr}.mt-actions .btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+
+<div class="mt-page">
+  <header class="mt-top">
+    <a href="index.html" class="mt-brand">
+      <div class="navbar-logo-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="mt-brand-name">Maison <span>Élite</span></div>
+    </a>
+    <div style="display:flex;gap:.75rem;align-items:center">
+      <a href="coming-soon.html" style="color:rgba(250,246,240,.7);font-size:.82rem;text-decoration:none">Coming Soon</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" style="background:rgba(41,37,42,0.5);color:#fff;border:1px solid rgba(255,255,255,0.5)"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+    </div>
+  </header>
+
+  <main class="mt-main">
+    <div class="mt-card">
+      <div class="mt-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div>
+      <div class="mt-badge"><span class="dot"></span> Maintenance Mode</div>
+      <h1 class="mt-title">We're Perfecting <em>Every Stitch</em></h1>
+      <p class="mt-desc">Our atelier website is briefly offline for a little pressing &amp; polishing — new fabrics, faster bookings, fresher look. We'll be back on the runway very shortly. Thank you for your patience.</p>
+
+      <div class="mt-progress"><div class="mt-progress-fill" id="mtBar"></div></div>
+      <div class="mt-progress-meta"><span><svg class="icon" style="width:.9em;height:.9em;vertical-align:-0.1em;margin:0 .3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Pressing &amp; polishing…</span><span id="mtPct">0%</span></div>
+
+      <div class="mt-actions">
+        <a href="index.html" class="btn btn-champagne"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Home</a>
+        <a href="tel:+919876543210" class="btn btn-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> +91 98765 43210</a>
+      </div>
+
+      <div class="mt-contact">
+        <a href="contact.html" class="mt-contact-item">
+          <span style="font-size:1.4rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span><strong>Need a fitting?</strong><small>Book via phone / WhatsApp</small></span>
+        </a>
+        <a href="mailto:hello@maisonelite.in" class="mt-contact-item">
+          <span style="font-size:1.4rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span><strong>hello@maisonelite.in</strong><small>We reply within 24 hrs</small></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-footer">
+    <span>© 2026 Maison Élite · Est. 2008, Mumbai</span>
+    <span style="display:flex;gap:1.25rem">
+      <a href="index.html">Home</a>
+      <a href="coming-soon.html">Coming Soon</a>
+      <a href="404.html">404</a>
+    </span>
+  </footer>
+</div>
+
+<div class="toast" role="alert"></div>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var bar = document.getElementById('mtBar'), pct = document.getElementById('mtPct');
+  if(!bar) return;
+  var p = 0, target = 82;
+  requestAnimationFrame(function(){ bar.style.width = target + '%'; });
+  var t = setInterval(function(){
+    p = Math.min(p + Math.ceil((target - p) / 8) + 1, target);
+    if(pct) pct.textContent = p + '%';
+    if(p >= target) clearInterval(t);
+  }, 90);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maison Élite Services – Bespoke tailoring, bridal couture, blouse stitching, alterations, custom fitting and measurement consultations in Mumbai.">
+<title>Our Services | Maison Élite – Premium Tailoring Services</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+  .service-hero-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+  .service-hero-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-gentle);
+  }
+  .service-hero-card:hover img { transform: scale(1.06); }
+  .service-hero-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(41,37,42,0.92) 0%, rgba(41,37,42,0.3) 60%, transparent 100%);
+  }
+  .service-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    width: 100%;
+  }
+  .service-tab-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid rgba(112,45,66,0.1);
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .service-tab-bar::-webkit-scrollbar { display: none; }
+  .service-tab {
+    padding: .875rem 1.5rem;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--charcoal-light);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--duration-fast);
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: var(--font-sans);
+  }
+  .service-tab.active, .service-tab:hover {
+    color: var(--burgundy);
+    border-bottom-color: var(--burgundy);
+  }
+  .why-card {
+    padding: 1.75rem;
+    border-radius: var(--radius-xl);
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--ivory);
+    border: 1px solid rgba(112,45,66,0.08);
+    transition: all var(--duration-normal) var(--ease-elegant);
+    box-shadow: var(--shadow-sm);
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .why-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(112,45,66,0.1), rgba(197,143,157,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    transition: all var(--duration-normal);
+  }
+  .why-card:hover .why-icon { background: var(--burgundy); color: #fff; }
+  /* ── Transparent Pricing: equal-height, aligned cards ── */
+  .pricing-card{ display:flex;flex-direction:column;height:100%;text-align:left; }
+  .pricing-type{ font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep,#8E4A5C);margin-bottom:.4rem; }
+  .pricing-card.featured .pricing-type{ color:var(--champagne); }
+  .pricing-card .pricing-price{ display:flex;align-items:baseline;gap:.15rem; }
+  .pricing-card .pricing-price small{ font-family:var(--font-sans);font-size:.85rem;font-weight:600;color:var(--charcoal-light); }
+  .pricing-features{ flex:1; }
+  .pricing-feature{ position:relative;padding-left:1.6rem; }
+  .pricing-feature::before{ content:'✓';position:absolute;left:0;top:0;width:1.1rem;height:1.1rem;border-radius:50%;background:rgba(112,45,66,.1);color:var(--burgundy);font-size:.65rem;font-weight:800;display:flex;align-items:center;justify-content:center; }
+  .pricing-card.featured .pricing-feature::before{ background:rgba(255,255,255,.2);color:#fff; }
+  /* ── Everything We Offer: image cards (replaces icons) ── */
+  .service-card.catalogue-card{ padding:0;overflow:hidden;display:flex;flex-direction:column;height:100%; }
+  .service-card-img{ position:relative;height:200px;overflow:hidden;flex-shrink:0; }
+  .service-card-img img{ width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--duration-slow) var(--ease-gentle); }
+  .service-card.catalogue-card:hover .service-card-img img{ transform:scale(1.07); }
+  .service-card-img::after{ content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(41,37,42,.35),transparent 55%);pointer-events:none; }
+  .service-card-price{ position:absolute;left:1rem;bottom:1rem;z-index:1;background:rgba(250,246,240,.95);backdrop-filter:blur(6px);color:var(--burgundy);font-size:.75rem;font-weight:800;letter-spacing:.04em;padding:.35rem .8rem;border-radius:var(--radius-pill);box-shadow:var(--shadow-sm); }
+  .catalogue-body{ padding:1.5rem 1.5rem 1.5rem;display:flex;flex-direction:column;flex:1; }
+  .catalogue-body h3{ font-family:var(--font-serif);font-size:1.25rem;margin-bottom:.625rem; }
+  .catalogue-body p{ font-size:.875rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1.25rem;flex:1; }
+  .catalogue-foot{ display:flex;justify-content:space-between;align-items:center;gap:.75rem;margin-top:auto; }
+  /* ── Filter feedback ── */
+  .service-tab .tab-count{ display:inline-flex;align-items:center;justify-content:center;min-width:1.4rem;height:1.4rem;padding:0 .35rem;margin-left:.45rem;font-size:.68rem;font-weight:800;border-radius:var(--radius-pill);background:rgba(112,45,66,.1);color:var(--burgundy);vertical-align:middle; }
+  .service-tab.active .tab-count{ background:var(--burgundy);color:#fff; }
+  .filter-empty{ display:none;text-align:center;padding:3rem 1.5rem;border:1.5px dashed rgba(112,45,66,.25);border-radius:var(--radius-xl);color:var(--charcoal-light);font-size:.95rem;grid-column:1/-1; }
+  .filter-empty.show{ display:block; }
+  .service-hero-card.hide,.service-card.hide{ display:none; }
+  .service-hero-card.pop,.service-card.pop{ animation:fadeInUp .45s var(--ease-elegant) both; }
+  @media(max-width:576px){ .service-card-img{ height:180px; } }
+
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="navbar-logo">Maison <span>Élite</span></div>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Niche Styles</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link active">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+      <a href="login.html" class="nav-login"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="navbar-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo" style="color:var(--charcoal)">Maison <span>Élite</span></div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-nav-link">Home <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="home2.html" class="mobile-nav-link">Niche Styles <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="about.html" class="mobile-nav-link">About Us <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="services.html" class="mobile-nav-link">Services <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="blog.html" class="mobile-nav-link">Blog <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="contact.html" class="mobile-nav-link">Contact <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="login.html" class="mobile-nav-link">Login / Register <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+  </ul>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Appointment</a><a href="login.html" class="btn btn-secondary" style="width:100%;justify-content:center">Login / Register</a></div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"><img src="assets/images/tailor_at_work.jpg" alt="Master tailor at work in atelier" loading="eager"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <h1 class="page-hero-title">Our Tailoring <em style="font-style:italic;color:var(--champagne)">Services</em></h1>
+      <p class="page-hero-subtitle">Every stitch is a promise of perfection. Explore our comprehensive range of bespoke tailoring and alteration services.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+<!-- ═══════ SECTION 1: FEATURED SERVICE CARDS ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="service-tab-bar" role="tablist" aria-label="Filter services">
+      <button class="service-tab active" role="tab" aria-selected="true" data-filter="all">All Services</button>
+      <button class="service-tab" role="tab" aria-selected="false" data-filter="bespoke">Bespoke</button>
+      <button class="service-tab" role="tab" aria-selected="false" data-filter="bridal">Bridal</button>
+      <button class="service-tab" role="tab" aria-selected="false" data-filter="ethnic">Ethnic</button>
+      <button class="service-tab" role="tab" aria-selected="false" data-filter="alterations">Alterations</button>
+      <button class="service-tab" role="tab" aria-selected="false" data-filter="corporate">Corporate</button>
+    </div>
+    <div class="grid-3" id="featuredGrid" style="margin-bottom:2rem">
+      <!-- Card 1 -->
+      <div class="service-hero-card reveal reveal-delay-1" data-category="bespoke">
+        <img src="assets/images/bespoke_flatlay.jpg" alt="Flatlay of premium knitwear and tailoring essentials">
+        <div class="service-hero-content">
+          <span class="badge badge-champagne" style="margin-bottom:.75rem;display:inline-flex"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> Signature</span>
+          <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:.5rem">Bespoke Tailoring</h3>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.8);margin-bottom:1rem">Full custom garments built from scratch to your exact measurements and vision.</p>
+          <a href="service-detail.html" class="btn btn-champagne btn-sm">View Details <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="service-hero-card reveal reveal-delay-2" data-category="bridal">
+        <img src="assets/images/wedding_couple.jpg" alt="Newlywed couple in soft backlight">
+        <div class="service-hero-content">
+          <span class="badge badge-burgundy" style="margin-bottom:.75rem;display:inline-flex"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="m9.5 8.5-3-4.5 3.5 1.5L12 3l2 2.5L17.5 4l-3 4.5"/></svg> Most Popular</span>
+          <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:.5rem">Bridal Couture</h3>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.8);margin-bottom:1rem">Dream lehengas, sarees and wedding gowns for the most special day of your life.</p>
+          <a href="service-detail.html#bridal" class="btn btn-champagne btn-sm">View Details <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="service-hero-card reveal reveal-delay-3" data-category="ethnic">
+        <img src="assets/images/ethnic_saree_purple.jpg" alt="Woman in purple silk saree">
+        <div class="service-hero-content">
+          <span class="badge badge-rose" style="margin-bottom:.75rem;display:inline-flex"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Traditional</span>
+          <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:.5rem">Ethnic Wear</h3>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.8);margin-bottom:1rem">Salwar suits, anarkalis, sarees and festive ethnic outfits with authentic craftsmanship.</p>
+          <a href="service-detail.html#ethnic" class="btn btn-champagne btn-sm">View Details <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <div class="filter-empty" id="featuredEmpty">No services found in this category. Try another filter.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 2: FULL SERVICE LIST ═══════ -->
+<section class="section-sm" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Everything We Offer</div>
+      <h2 class="section-title">Complete Service <em style="color:var(--burgundy)">Catalogue</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">From everyday stitching to grand couture — browse the full catalogue, or use the filters above.</p>
+    </div>
+    <div class="grid-3" id="catalogueGrid">
+      <div class="service-card catalogue-card reveal reveal-delay-1" data-category="bespoke">
+        <div class="service-card-img"><img src="assets/images/bespoke_flatlay.jpg" alt="Bespoke tailoring flatlay with premium fabrics" loading="lazy"><span class="service-card-price">Starting ₹2,500</span></div>
+        <div class="catalogue-body">
+          <h3>Bespoke Tailoring</h3>
+          <p>Complete custom garments — suits, kurtas, dresses, blazers — drafted from your measurements and designed to your taste.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-burgundy">Bespoke</span>
+            <a href="service-detail.html" class="btn btn-sm btn-primary">Explore <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card catalogue-card reveal reveal-delay-2" data-category="bridal">
+        <div class="service-card-img"><img src="assets/images/bridal_lehenga_editorial.jpg" alt="Bridal lehenga editorial look" loading="lazy"><span class="service-card-price">Starting ₹25,000</span></div>
+        <div class="catalogue-body">
+          <h3>Bridal Package</h3>
+          <p>End-to-end bridal wardrobe — lehenga, blouse, saree, engagement outfit and mehendi dress — all from one trusted atelier.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-rose">Bridal</span>
+            <a href="service-detail.html#bridal" class="btn btn-sm btn-primary">Explore <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card catalogue-card reveal reveal-delay-3" data-category="ethnic">
+        <div class="service-card-img"><img src="assets/images/blouse_evening.jpg" alt="Designer evening blouse with embroidery" loading="lazy"><span class="service-card-price">Starting ₹800</span></div>
+        <div class="catalogue-body">
+          <h3>Blouse Stitching</h3>
+          <p>Designer blouses with intricate back patterns, mirror work, cut-outs, embroidery and custom sleeve designs.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-champagne">Ethnic</span>
+            <a href="service-detail.html#blouse" class="btn btn-sm btn-primary">Explore <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card catalogue-card reveal reveal-delay-1" data-category="alterations">
+        <div class="service-card-img"><img src="assets/images/tailor_at_work.jpg" alt="Master tailor doing expert alterations" loading="lazy"><span class="service-card-price">Starting ₹300</span></div>
+        <div class="catalogue-body">
+          <h3>Expert Alterations</h3>
+          <p>Resize, restyle or repair any garment. Zip replacements, hemming, taking in/letting out seams, relining and invisible repairs.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-burgundy">Alterations</span>
+            <a href="service-detail.html#alterations" class="btn btn-sm btn-primary">Explore <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card catalogue-card reveal reveal-delay-2" data-category="bespoke">
+        <div class="service-card-img"><img src="assets/images/suit_fitting.jpg" alt="Custom fitting session for a tailored suit" loading="lazy"><span class="service-card-price">₹500 (redeemable)</span></div>
+        <div class="catalogue-body">
+          <h3>Custom Fitting Session</h3>
+          <p>A dedicated 1-hour session to take 20-point precision measurements, analyse your body shape and recommend the perfect silhouettes for you.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-burgundy">Bespoke</span>
+            <a href="contact.html" class="btn btn-sm btn-primary">Book <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card catalogue-card reveal reveal-delay-3" data-category="corporate">
+        <div class="service-card-img"><img src="assets/images/suit_blue.jpg" alt="Corporate tailored blue suit" loading="lazy"><span class="service-card-price">Starting ₹3,500</span></div>
+        <div class="catalogue-body">
+          <h3>Corporate Tailoring</h3>
+          <p>Business suits, uniform stitching for corporates, formal blazers and professional ethnic wear for executives and teams.</p>
+          <div class="catalogue-foot">
+            <span class="badge badge-champagne">Corporate</span>
+            <a href="service-detail.html" class="btn btn-sm btn-primary">Explore <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="filter-empty" id="catalogueEmpty">No services found in this category. Try another filter.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 3: PRICING ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Transparent Pricing</div>
+      <h2 class="section-title">Honest Packages for <em style="color:var(--burgundy)">Every Budget</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">Premium craftsmanship needn't mean surprising bills. Our pricing is clear, fair and reflective of true artisanal value.</p>
+    </div>
+    <div class="grid-3">
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-type">Essential</div>
+        <div class="pricing-title">Stitch & Style</div>
+        <div class="pricing-price"><sup>₹</sup>1,999<small>/garment</small></div>
+        <p style="font-size:.875rem;color:var(--charcoal-light);margin-bottom:1rem">Perfect for everyday wear and standard stitching needs.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature">Standard measurements</li>
+          <li class="pricing-feature">1 fitting session</li>
+          <li class="pricing-feature">Basic design input</li>
+          <li class="pricing-feature">5–7 day delivery</li>
+          <li class="pricing-feature">Minor adjustments included</li>
+        </ul>
+        <a href="contact.html" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:auto">Book Now</a>
+      </div>
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-type" style="color:rgba(255,255,255,0.7)">Signature</div>
+        <div class="pricing-title" style="color:white">Bespoke Atelier</div>
+        <div class="pricing-price"><sup>₹</sup>4,999<small>/garment</small></div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:1rem">Our most-loved package for discerning clients who want the full experience.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature" style="color:white">20-point precision measurements</li>
+          <li class="pricing-feature" style="color:white">3 fitting sessions</li>
+          <li class="pricing-feature" style="color:white">Designer consultation included</li>
+          <li class="pricing-feature" style="color:white">10–14 day delivery</li>
+          <li class="pricing-feature" style="color:white">Unlimited minor adjustments</li>
+          <li class="pricing-feature" style="color:white">Fabric sourcing assistance</li>
+        </ul>
+        <a href="contact.html" class="btn btn-champagne" style="width:100%;justify-content:center;margin-top:auto">Book Now</a>
+      </div>
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="pricing-type">Prestige</div>
+        <div class="pricing-title">Grand Couture</div>
+        <div class="pricing-price"><sup>₹</sup>12,999<small>/garment</small></div>
+        <p style="font-size:.875rem;color:var(--charcoal-light);margin-bottom:1rem">For weddings, special occasions and the truly extraordinary.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature">Full couture measurements</li>
+          <li class="pricing-feature">Unlimited fitting sessions</li>
+          <li class="pricing-feature">Hand embroidery & embellishments</li>
+          <li class="pricing-feature">Private atelier appointment</li>
+          <li class="pricing-feature">Home delivery & draping</li>
+          <li class="pricing-feature">Lifetime care commitment</li>
+        </ul>
+        <a href="contact.html" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:auto">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 4: WHY CHOOSE US ═══════ -->
+<section class="section" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Why Maison Élite</div>
+      <h2 class="section-title">The Difference <em style="color:var(--burgundy)">Quality Makes</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+        <div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">20-Point Measurement System</h4><p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Our proprietary measurement protocol captures every nuance of your physique for a fit that feels like a second skin.</p></div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div>
+        <div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Handpicked Fabrics Only</h4><p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Every fabric in our studio is personally selected from Varanasi, Surat, Kanchipuram and international mills.</p></div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Satisfaction Guarantee</h4><p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">If any aspect of your garment doesn't meet your expectations, we alter it until it does — at no extra charge.</p></div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div>
+        <div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Express Service Available</h4><p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Need it urgently? Our express 48-hour stitching service ensures you're never underdressed for an occasion.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 5: FAQ ═══════ -->
+<section class="section">
+  <div class="container" style="max-width:860px">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2 class="section-title">Services <em style="color:var(--burgundy)">FAQ</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="reveal">
+      <div class="accordion-item">
+        <button class="accordion-header">How long does a bespoke garment take?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Standard bespoke tailoring takes 10–14 days with 2–3 fitting sessions. Bridal and heavily embroidered garments may take 4–8 weeks depending on complexity and embellishment work involved.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Do I need to bring my own fabric?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Not at all! We carry an extensive in-house fabric library of premium silks, brocades, georgettes, velvets and more. You can also bring your own fabric — we'll advise on the right quantity needed.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">How many fitting sessions are included?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Our Standard package includes 1 fitting, Bespoke Atelier includes 3 fittings, and Grand Couture includes unlimited fittings. Additional fittings are charged at ₹300 each for standard packages.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Can you alter garments bought elsewhere?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Absolutely. We alter garments from any source — Indian or international brands, vintage pieces, heirlooms and ready-to-wear. Bring the garment and we'll assess what's possible.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Do you offer home visits for measurement?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Yes! For bridal packages and Grand Couture clients, we offer complimentary home visits within Mumbai. A nominal travel fee applies for locations beyond 20km from our studio.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">What is your cancellation and refund policy?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Cancellations made 7+ days before production begins receive a full refund of advance. Once fabric is cut, we refund 50% of the advance. Completed garments are non-refundable but we guarantee alterations until you are satisfied.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 6: CTA ═══════ -->
+<section class="section" style="background:linear-gradient(135deg,var(--charcoal),var(--burgundy-dark))">
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <div class="hero-badge" style="display:inline-flex;margin-bottom:1.5rem"><svg class="icon" style="width:.9em;height:.9em;vertical-align:-0.1em;margin:0 .3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Your Garment Awaits</div>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:white;margin-bottom:1.25rem">Ready to Begin Your <em style="color:var(--champagne)">Bespoke Journey?</em></h2>
+      <p style="font-size:1rem;color:rgba(250,246,240,.8);max-width:520px;margin:0 auto 2.5rem;line-height:1.8">Schedule a free consultation with our master tailors and take the first step toward a wardrobe that truly reflects you.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-champagne btn-lg">Book Free Consultation <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="service-detail.html" class="btn btn-light btn-lg">See Service Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem" class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Maison <span>Élite</span></div>
+        <p class="footer-desc">Where every stitch tells your story. Premium custom tailoring and bespoke stitching crafted with generations of artistry.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Home</a></li>
+          <li><a href="home2.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Niche Styles</a></li>
+          <li><a href="about.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> About Us</a></li>
+          <li><a href="services.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Services</a></li>
+          <li><a href="blog.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blog</a></li>
+          <li><a href="contact.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-detail.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bespoke Tailoring</a></li>
+          <li><a href="service-detail.html#bridal" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bridal Wear</a></li>
+          <li><a href="service-detail.html#blouse" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blouse Stitching</a></li>
+          <li><a href="service-detail.html#alterations" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Alterations</a></li>
+          <li><a href="home2.html#ethnic" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Ethnic Wear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Visit Us</div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div>12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div>+91 98765 43210</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div><div>hello@maisonelite.in</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div>Mon–Sat: 10am – 8pm</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(250,246,240,0.5)">© 2026 Maison Élite. All rights reserved. Crafted with <svg class="icon" style="width:1em;height:1em;vertical-align:-0.12em;margin:0 .2rem" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> in India.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="login.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Login</a>
+        <a href="coming-soon.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Coming Soon</a>
+        <a href="404.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">404</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="alert"></div>
+<button class="scroll-to-top" aria-label="Scroll to top"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<div class="lightbox"><button class="lightbox-close"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt="Preview"></div>
+<script src="assets/js/main.js"></script>
+<script>
+  // Service tab filter — filters BOTH featured + catalogue grids
+  (function(){
+    const tabs = document.querySelectorAll('.service-tab');
+    const featuredCards = document.querySelectorAll('#featuredGrid .service-hero-card');
+    const catalogueCards = document.querySelectorAll('#catalogueGrid .catalogue-card');
+    const featuredEmpty = document.getElementById('featuredEmpty');
+    const catalogueEmpty = document.getElementById('catalogueEmpty');
+    // Add live counts to tabs
+    const allCards = [...featuredCards, ...catalogueCards];
+    tabs.forEach(tab => {
+      const f = tab.dataset.filter;
+      const n = f === 'all' ? allCards.length : allCards.filter(c => c.dataset.category === f).length;
+      const badge = document.createElement('span');
+      badge.className = 'tab-count';
+      badge.textContent = n;
+      tab.appendChild(badge);
+    });
+    function applyFilter(filter){
+      let visF = 0, visC = 0;
+      featuredCards.forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hide', !show);
+        card.classList.remove('pop');
+        if (show) { visF++; void card.offsetWidth; card.classList.add('pop'); }
+      });
+      catalogueCards.forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hide', !show);
+        card.classList.remove('pop');
+        if (show) { visC++; void card.offsetWidth; card.classList.add('pop'); }
+      });
+      featuredEmpty && featuredEmpty.classList.toggle('show', visF === 0);
+      catalogueEmpty && catalogueEmpty.classList.toggle('show', visC === 0);
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        applyFilter(tab.dataset.filter);
+      });
+    });
+    applyFilter('all');
+  })();
+</script>
+</body>
+</html>

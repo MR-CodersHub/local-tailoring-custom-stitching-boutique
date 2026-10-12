@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Contact Maison Élite – Book a tailoring appointment, visit our studio in Mumbai, or reach us by phone and email. We'd love to hear from you.">
+<title>Contact Us | Maison Élite – Book an Appointment</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+  .contact-info-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    background: rgba(250,246,240,0.06);
+    border: 1px solid rgba(250,246,240,0.1);
+    transition: all var(--duration-normal);
+  }
+  .contact-info-card:hover {
+    background: rgba(250,246,240,0.1);
+    transform: translateX(4px);
+  }
+  .contact-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: var(--champagne);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  .map-container {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 420px;
+    position: relative;
+    border: 1px solid rgba(112,45,66,0.12);
+    box-shadow: var(--shadow-md);
+    background: #e8e0d5;
+  }
+  .map-container iframe{ position:absolute;inset:0;width:100%;height:100%;border:0; }
+  .map-card{
+    position:absolute;left:1.5rem;bottom:1.5rem;z-index:2;
+    background:rgba(250,246,240,0.97);backdrop-filter:blur(8px);
+    border-radius:var(--radius-lg);padding:1.25rem 1.5rem;max-width:340px;
+    box-shadow:var(--shadow-lg);border:1px solid rgba(112,45,66,0.1);
+  }
+  @media(max-width:576px){ .map-card{ left:1rem;right:1rem;bottom:1rem;max-width:none; } }
+  .time-slot {
+    padding: .75rem 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1.5px solid rgba(112,45,66,0.15);
+    font-size: .875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--duration-fast);
+    background: transparent;
+    font-family: var(--font-sans);
+    color: var(--charcoal);
+    text-align: center;
+  }
+  .time-slot:hover, .time-slot.selected {
+    background: var(--burgundy);
+    color: white;
+    border-color: var(--burgundy);
+  }
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+  }
+  .step-ind {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    max-width: 160px;
+  }
+  .step-ind::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 60%;
+    width: 80%;
+    height: 2px;
+    background: rgba(112,45,66,0.15);
+  }
+  .step-ind:last-child::after { display: none; }
+  .step-ind.active::after { background: var(--burgundy); }
+  .step-ind-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(112,45,66,0.1);
+    border: 2px solid rgba(112,45,66,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .875rem;
+    color: var(--charcoal-light);
+    margin-bottom: .5rem;
+    transition: all var(--duration-normal);
+    position: relative;
+    z-index: 1;
+  }
+  .step-ind.active .step-ind-dot {
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+    color: white;
+  }
+  .step-ind-label { font-size: .75rem; font-weight: 600; color: var(--charcoal-light); text-align: center; }
+  .step-ind.active .step-ind-label { color: var(--burgundy); }
+  .studio-card{ text-align:left;padding:0;border-radius:var(--radius-xl);background:var(--ivory);border:1px solid rgba(112,45,66,.08);overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--duration-normal) var(--ease-elegant);display:flex;flex-direction:column;height:100%; }
+  .studio-card:hover{ transform:translateY(-6px);box-shadow:var(--shadow-lg); }
+  .studio-card-img{ height:170px;overflow:hidden;position:relative;flex-shrink:0; }
+  .studio-card-img img{ width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--duration-slow) var(--ease-gentle); }
+  .studio-card:hover .studio-card-img img{ transform:scale(1.07); }
+  .studio-card-img::after{ content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(41,37,42,.3),transparent 55%); }
+  .studio-card-body{ padding:1.4rem 1.4rem 1.6rem; }
+  .quick-icon{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 1rem;
+    background:var(--champagne);color:var(--burgundy-dark);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.5);
+  }
+  .quick-icon .icon{ width:28px;height:28px;stroke:var(--burgundy-dark); }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="navbar-logo">Maison <span>Élite</span></div>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Niche Styles</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+      <a href="login.html" class="nav-login"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="navbar-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo" style="color:var(--charcoal)">Maison <span>Élite</span></div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-nav-link">Home <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="home2.html" class="mobile-nav-link">Niche Styles <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="about.html" class="mobile-nav-link">About Us <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="services.html" class="mobile-nav-link">Services <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="blog.html" class="mobile-nav-link">Blog <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="contact.html" class="mobile-nav-link">Contact <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="login.html" class="mobile-nav-link">Login / Register <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+  </ul>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Appointment</a><a href="login.html" class="btn btn-secondary" style="width:100%;justify-content:center">Login / Register</a></div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"><img src="assets/images/boutique_store.jpg" alt="Maison Elite boutique store" loading="eager"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <h1 class="page-hero-title">Let's Create Something <em style="color:var(--champagne)">Beautiful</em></h1>
+      <p class="page-hero-subtitle">Book a consultation, ask a question or simply say hello. Our team is always happy to help.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+<!-- ═══════ SECTION 1: CONTACT INFO + FORM ═══════ -->
+<section class="section" style="background:linear-gradient(135deg,var(--charcoal) 0%,var(--burgundy-dark) 100%)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start">
+
+      <!-- Info Panel -->
+      <div class="reveal-left">
+        <div class="section-eyebrow" style="color:var(--champagne)">Get in Touch</div>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;color:white;margin-bottom:1rem">We're Always <em style="color:var(--champagne)">Here for You</em></h2>
+        <p style="font-size:.9375rem;color:rgba(250,246,240,.75);line-height:1.85;margin-bottom:2rem">Whether you want to book a fitting, enquire about a service or visit our studio — reach out and we'll respond within a few hours.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem">
+          <div class="contact-info-card">
+            <div class="contact-icon-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div style="font-weight:700;color:white;margin-bottom:.25rem">Studio Address</div><div style="font-size:.875rem;color:rgba(250,246,240,.7)">12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001<br>Near Linking Road, Bandra West</div></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+            <div><div style="font-weight:700;color:white;margin-bottom:.25rem">Phone</div><div style="font-size:.875rem;color:rgba(250,246,240,.7)">+91 98765 43210 (WhatsApp)<br>+91 22 2345 6789 (Studio)</div></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+            <div><div style="font-weight:700;color:white;margin-bottom:.25rem">Email</div><div style="font-size:.875rem;color:rgba(250,246,240,.7)">hello@maisonelite.in<br>appointments@maisonelite.in</div></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div>
+            <div><div style="font-weight:700;color:white;margin-bottom:.25rem">Studio Hours</div><div style="font-size:.875rem;color:rgba(250,246,240,.7)">Monday – Saturday: 10:00 AM – 8:00 PM<br>Sunday: 11:00 AM – 6:00 PM<br><span style="color:var(--champagne)"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Appointments recommended</span></div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.75rem">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="reveal-right">
+        <div style="background:var(--ivory);border-radius:var(--radius-xl);padding:2.5rem;box-shadow:var(--shadow-xl)">
+          <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Send Us a Message</h3>
+          <p style="font-size:.875rem;color:var(--charcoal-light);margin-bottom:2rem">We respond to all enquiries within 4 hours during studio hours.</p>
+          <form data-validate id="contactForm">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" id="firstName" class="form-control" placeholder="Your first name" required>
+                <div class="form-error">Required</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Your last name" required>
+                <div class="form-error">Required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+              <div class="form-error">Please enter a valid email</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" placeholder="+91 98765 43210">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Interested In</label>
+              <select class="form-control">
+                <option value="">Select a service</option>
+                <option>Bespoke Tailoring</option>
+                <option>Bridal Couture Package</option>
+                <option>Blouse Stitching</option>
+                <option>Expert Alterations</option>
+                <option>Custom Fitting Session</option>
+                <option>Corporate Tailoring</option>
+                <option>Kids' Wear</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Message *</label>
+              <textarea class="form-control" rows="4" placeholder="Tell us about your requirements, occasion, timeline or any questions..." required style="resize:vertical"></textarea>
+              <div class="form-error">Please write a message</div>
+            </div>
+            <div class="form-group" style="display:flex;align-items:flex-start;gap:.75rem">
+              <input type="checkbox" id="consent" style="width:18px;height:18px;accent-color:var(--burgundy);margin-top:3px;flex-shrink:0">
+              <label for="consent" style="font-size:.8125rem;color:var(--charcoal-light);cursor:pointer">I agree to be contacted by Maison Élite regarding my enquiry. My information will not be shared with third parties.</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Send Message <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 2: APPOINTMENT BOOKING ═══════ -->
+<section class="section">
+  <div class="container" style="max-width:860px">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Online Booking</div>
+      <h2 class="section-title">Book Your <em style="color:var(--burgundy)">Fitting Appointment</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+      <p class="section-subtitle">Schedule a dedicated fitting session with one of our master tailors. Free for first-time visitors.</p>
+    </div>
+    <div class="step-indicator reveal">
+      <div class="step-ind active"><div class="step-ind-dot">1</div><div class="step-ind-label">Choose Service</div></div>
+      <div class="step-ind"><div class="step-ind-dot">2</div><div class="step-ind-label">Pick Date</div></div>
+      <div class="step-ind"><div class="step-ind-dot">3</div><div class="step-ind-label">Select Time</div></div>
+      <div class="step-ind"><div class="step-ind-dot">4</div><div class="step-ind-label">Confirm</div></div>
+    </div>
+    <div class="booking-panel reveal" style="background:var(--ivory);border-radius:var(--radius-xl);padding:2.5rem;border:1px solid rgba(112,45,66,0.1);box-shadow:var(--shadow-sm)">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem">
+        <label style="cursor:pointer"><input type="radio" name="appt-service" style="display:none"><div class="appt-tile" style="padding:1.25rem;border:2px solid rgba(112,45,66,0.15);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration-fast)" onclick="document.querySelectorAll('.appt-tile').forEach(d=>d.classList.remove('selected'));this.classList.add('selected')"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div><div style="font-weight:700;font-size:.875rem">Bespoke Tailoring</div></div></label>
+        <label style="cursor:pointer"><input type="radio" name="appt-service" style="display:none"><div class="appt-tile" style="padding:1.25rem;border:2px solid rgba(112,45,66,0.15);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration-fast)" onclick="document.querySelectorAll('.appt-tile').forEach(d=>d.classList.remove('selected'));this.classList.add('selected')"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="m9.5 8.5-3-4.5 3.5 1.5L12 3l2 2.5L17.5 4l-3 4.5"/></svg></div><div style="font-weight:700;font-size:.875rem">Bridal Consultation</div></div></label>
+        <label style="cursor:pointer"><input type="radio" name="appt-service" style="display:none"><div class="appt-tile" style="padding:1.25rem;border:2px solid rgba(112,45,66,0.15);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration-fast)" onclick="document.querySelectorAll('.appt-tile').forEach(d=>d.classList.remove('selected'));this.classList.add('selected')"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg></div><div style="font-weight:700;font-size:.875rem">Alterations</div></div></label>
+      </div>
+      <div style="margin-bottom:1.5rem">
+        <label class="form-label">Preferred Date</label>
+        <input type="date" class="form-control" style="max-width:300px">
+      </div>
+      <div style="margin-bottom:2rem">
+        <label class="form-label">Available Time Slots</label>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:.75rem">
+          <button class="time-slot" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">10:00 AM</button>
+          <button class="time-slot selected" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">11:30 AM</button>
+          <button class="time-slot" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">2:00 PM</button>
+          <button class="time-slot" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">3:30 PM</button>
+          <button class="time-slot" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">5:00 PM</button>
+          <button class="time-slot" disabled style="opacity:.4;cursor:not-allowed">6:30 PM</button>
+          <button class="time-slot" onclick="document.querySelectorAll('.time-slot').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">7:00 PM</button>
+          <button class="time-slot" disabled style="opacity:.4;cursor:not-allowed">7:30 PM</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-lg" onclick="showToast('Appointment request sent! We will confirm within 2 hours.','success')" style="width:100%;justify-content:center">Confirm Booking <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 3: MAP ═══════ -->
+<section class="section-sm" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Find Us</div>
+      <h2 class="section-title">Visit Our <em style="color:var(--burgundy)">Atelier</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="map-container reveal">
+      <iframe title="Maison Élite Atelier location map — Bandra West, Mumbai" src="https://maps.google.com/maps?q=Linking%20Road%2C%20Bandra%20West%2C%20Mumbai%20400050&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map-card">
+        <div style="font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--charcoal)">Maison Élite Atelier</div>
+        <div style="font-size:.85rem;color:var(--charcoal-light);margin:.3rem 0 1rem;line-height:1.6">12, Atelier Lane, Fashion District, Bandra West, Mumbai 400001</div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="https://www.google.com/maps/search/?api=1&query=Linking+Road+Bandra+West+Mumbai+400050" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open in Google Maps <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="tel:+919876543210" class="btn btn-secondary btn-sm">Call Studio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 4: WHY VISIT ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">In-Studio Experience</div>
+      <h2 class="section-title">What to Expect When You <em style="color:var(--burgundy)">Visit</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="grid-4">
+      <div class="studio-card reveal reveal-delay-1">
+        <div class="studio-card-img"><img src="assets/images/boutique_interior.jpg" alt="Warm boutique interior welcome" loading="lazy"></div>
+        <div class="studio-card-body">
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Warm Welcome</h3>
+          <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Enjoy complimentary chai or coffee as our team gets to know your style and needs.</p>
+        </div>
+      </div>
+      <div class="studio-card reveal reveal-delay-2">
+        <div class="studio-card-img"><img src="assets/images/fabric_collection.jpg" alt="Premium fabric library collection" loading="lazy"></div>
+        <div class="studio-card-body">
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Fabric Library</h3>
+          <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Browse 500+ premium fabrics from our in-studio collection and feel the difference quality makes.</p>
+        </div>
+      </div>
+      <div class="studio-card reveal reveal-delay-3">
+        <div class="studio-card-img"><img src="assets/images/bridal_fitting.jpg" alt="Private fitting suite session" loading="lazy"></div>
+        <div class="studio-card-body">
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Private Fitting Suite</h3>
+          <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Your comfort is our priority. Fittings happen in fully private, elegantly appointed suites.</p>
+        </div>
+      </div>
+      <div class="studio-card reveal reveal-delay-4">
+        <div class="studio-card-img"><img src="assets/images/bespoke_essentials.jpg" alt="Bespoke tailoring essentials welcome gift" loading="lazy"></div>
+        <div class="studio-card-body">
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem">Welcome Gift</h3>
+          <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">First-time visitors receive a complimentary Maison Élite fabric care kit as our welcome gift.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 5: FAQ ═══════ -->
+<section class="section" style="background:var(--ivory-dark)">
+  <div class="container" style="max-width:800px">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2 class="section-title">Before You <em style="color:var(--burgundy)">Visit</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="reveal">
+      <div class="accordion-item">
+        <button class="accordion-header">Is there parking available near the studio?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Yes — there is a paid parking facility directly opposite our studio on Atelier Lane. Street parking is available within a 2-minute walk on Hill Road. We recommend arriving 10 minutes early.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Do I need an appointment or can I walk in?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Walk-ins are welcome for fabric browsing and general enquiries. However, for fittings and consultations, an appointment is strongly recommended to ensure your dedicated tailor is available and the private suite is prepared for you.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">How long does a first consultation take?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">A standard consultation takes 45–60 minutes. Bridal consultations can take 90 minutes to 2 hours as we discuss the full wedding wardrobe. Please plan accordingly and don't rush the experience!</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">What should I bring to my first fitting appointment?<div class="accordion-icon">+</div></button>
+        <div class="accordion-body"><div class="accordion-content">Bring your inspiration images (phone or printouts), any fabric swatches you may have, and the footwear you plan to wear with the garment. For bridal consultations, bring your jewellery photos and any existing pieces you want to coordinate with.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 6: QUICK CONTACT STRIP ═══════ -->
+<section class="section" style="background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark))">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center">
+      <div class="reveal reveal-delay-1">
+        <div class="quick-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:white;margin-bottom:.375rem">Call Us Directly</div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:1rem">Mon–Sat, 10am–8pm</p>
+        <a href="tel:+919876543210" class="btn btn-champagne btn-sm">+91 98765 43210</a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="quick-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:white;margin-bottom:.375rem">WhatsApp Us</div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:1rem">Quick replies within 30 mins</p>
+        <a href="https://wa.me/919876543210" target="_blank" class="btn btn-champagne btn-sm">Chat on WhatsApp</a>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="quick-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:white;margin-bottom:.375rem">Email Us</div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:1rem">Response within 4 hours</p>
+        <a href="mailto:hello@maisonelite.in" class="btn btn-champagne btn-sm">hello@maisonelite.in</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem" class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Maison <span>Élite</span></div>
+        <p class="footer-desc">Where every stitch tells your story. Premium custom tailoring and bespoke stitching crafted with generations of artistry.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Home</a></li>
+          <li><a href="home2.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Niche Styles</a></li>
+          <li><a href="about.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> About Us</a></li>
+          <li><a href="services.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Services</a></li>
+          <li><a href="blog.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blog</a></li>
+          <li><a href="contact.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-detail.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bespoke Tailoring</a></li>
+          <li><a href="service-detail.html#bridal" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bridal Wear</a></li>
+          <li><a href="service-detail.html#blouse" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blouse Stitching</a></li>
+          <li><a href="service-detail.html#alterations" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Alterations</a></li>
+          <li><a href="home2.html#ethnic" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Ethnic Wear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Visit Us</div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div>12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div>+91 98765 43210</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div><div>hello@maisonelite.in</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div>Mon–Sat: 10am – 8pm</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(250,246,240,0.5)">© 2026 Maison Élite. All rights reserved. Crafted with <svg class="icon" style="width:1em;height:1em;vertical-align:-0.12em;margin:0 .2rem" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> in India.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="login.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Login</a>
+        <a href="coming-soon.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Coming Soon</a>
+        <a href="404.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">404</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="alert"></div>
+<button class="scroll-to-top" aria-label="Scroll to top"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maison Élite Blog – Fashion tips, tailoring guides, fabric care, bridal advice, outfit styling ideas and craftsmanship stories from our master tailors.">
+<title>Blog | Maison Élite – Tailoring Insights & Fashion Guides</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+  .blog-hero-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+  }
+  .blog-hero-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow);
+  }
+  .blog-hero-card:hover img { transform: scale(1.04); }
+  .blog-hero-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(41,37,42,0.9) 0%, transparent 55%);
+  }
+  .blog-hero-content { position: relative; z-index: 1; padding: 2.5rem; width: 100%; }
+  .post-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--ivory);
+    border: 1px solid rgba(112,45,66,0.08);
+    transition: all var(--duration-normal) var(--ease-elegant);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .post-card-img { height: 220px; overflow: hidden; position: relative; }
+  .post-card-img img { width:100%;height:100%;object-fit:cover;transition:transform var(--duration-slow); }
+  .post-card:hover .post-card-img img { transform: scale(1.06); }
+  .post-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .post-cat {
+    font-size: .6875rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: .75rem;
+  }
+  .post-title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.5;
+    margin-bottom: .625rem;
+    transition: color var(--duration-fast);
+  }
+  .post-card:hover .post-title { color: var(--burgundy); }
+  .post-excerpt { font-size: .875rem; color: var(--charcoal-light); line-height: 1.75; flex: 1; margin-bottom: 1.25rem; }
+  .post-meta { display: flex; align-items: center; gap: .75rem; font-size: .75rem; color: var(--charcoal-light); }
+  .post-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .75rem;
+    flex-shrink: 0;
+  }
+  .newsletter-box {
+    background: linear-gradient(135deg, var(--burgundy), var(--burgundy-dark));
+    border-radius: var(--radius-xl);
+    padding: 3rem;
+    text-align: center;
+  }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .tag { padding: .375rem .875rem; border-radius: var(--radius-pill); background: rgba(112,45,66,0.08); color: var(--burgundy); font-size: .75rem; font-weight: 600; cursor: pointer; transition: all var(--duration-fast); }
+  .tag:hover { background: var(--burgundy); color: white; }
+  .filter-empty{ display:none;text-align:center;padding:2.5rem 1.5rem;border:1.5px dashed rgba(112,45,66,.25);border-radius:var(--radius-xl);color:var(--charcoal-light);font-size:.95rem;grid-column:1/-1;background:var(--ivory); }
+  .filter-empty.show{ display:block; }
+  .post-card.hide{ display:none; }
+  .writer-avatar{ width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 1.25rem;border:3px solid var(--champagne);box-shadow:0 4px 18px rgba(112,45,66,.25); }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="navbar-logo">Maison <span>Élite</span></div>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Niche Styles</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link active">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+      <a href="login.html" class="nav-login"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="navbar-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo" style="color:var(--charcoal)">Maison <span>Élite</span></div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-nav-link">Home <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="home2.html" class="mobile-nav-link">Niche Styles <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="about.html" class="mobile-nav-link">About Us <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="services.html" class="mobile-nav-link">Services <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="blog.html" class="mobile-nav-link">Blog <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="contact.html" class="mobile-nav-link">Contact <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="login.html" class="mobile-nav-link">Login / Register <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+  </ul>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Appointment</a><a href="login.html" class="btn btn-secondary" style="width:100%;justify-content:center">Login / Register</a></div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"><img src="assets/images/boutique_rail.jpg" alt="Curated garments on boutique rail" loading="eager"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <h1 class="page-hero-title">The Atelier <em style="color:var(--champagne)">Journal</em></h1>
+      <p class="page-hero-subtitle">Stories, guides and inspiration from our master tailors — fabric care, style advice and the art of bespoke fashion.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+<!-- ═══════ SECTION 1: FEATURED POST ═══════ -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem">
+      <a href="blog-detail.html" class="blog-hero-card reveal-left">
+        <img src="assets/images/wedding_ceremony.jpg" alt="Outdoor wedding ceremony celebration" loading="lazy">
+        <div class="blog-hero-content">
+          <span class="badge badge-burgundy" style="margin-bottom:.75rem;display:inline-flex"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg> Featured</span>
+          <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--champagne);margin-bottom:.5rem">Bridal Guide · October 2026</div>
+          <h2 style="font-family:var(--font-serif);font-size:1.75rem;font-weight:700;color:white;margin-bottom:.75rem;line-height:1.4">The Complete Bridal Outfit Planning Guide: 6 Months Before Your Wedding</h2>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.8);margin-bottom:1rem">From lehenga selection to final fittings — a master tailor's timeline for your most important wardrobe.</p>
+          <div style="display:flex;align-items:center;gap:.75rem"><div class="post-avatar">P</div><div style="font-size:.75rem;color:rgba(255,255,255,0.7)">Priya Nair &nbsp;·&nbsp; 8 min read</div></div>
+        </div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:1.5rem" class="reveal-right">
+        <a href="blog-detail.html" style="display:grid;grid-template-columns:120px 1fr;gap:1rem;border-radius:var(--radius-xl);overflow:hidden;background:var(--ivory);border:1px solid rgba(112,45,66,0.08);transition:all var(--duration-normal);text-decoration:none" class="hover-lift">
+          <div style="overflow:hidden;height:100%"><img src="assets/images/blouse_rack.jpg" alt="Designer blouses on boutique clothing rail" style="width:100%;height:100%;object-fit:cover;min-height:100px" loading="lazy"></div>
+          <div style="padding:1rem"><div style="font-size:.625rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Blouse Design</div><div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--charcoal);line-height:1.4;margin-bottom:.5rem">Top 10 Back Blouse Designs Trending This Season</div><div style="font-size:.75rem;color:var(--charcoal-light)">Meera K. · 5 min read</div></div>
+        </a>
+        <a href="blog-detail.html" style="display:grid;grid-template-columns:120px 1fr;gap:1rem;border-radius:var(--radius-xl);overflow:hidden;background:var(--ivory);border:1px solid rgba(112,45,66,0.08);transition:all var(--duration-normal);text-decoration:none" class="hover-lift">
+          <div style="overflow:hidden;height:100%"><img src="assets/images/fabric_denim.jpg" alt="Folded denim and casual fabrics" style="width:100%;height:100%;object-fit:cover;min-height:100px" loading="lazy"></div>
+          <div style="padding:1rem"><div style="font-size:.625rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Fabric Care</div><div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--charcoal);line-height:1.4;margin-bottom:.5rem">How to Store Silk Garments Without Damage</div><div style="font-size:.75rem;color:var(--charcoal-light)">Vikram S. · 4 min read</div></div>
+        </a>
+        <a href="blog-detail.html" style="display:grid;grid-template-columns:120px 1fr;gap:1rem;border-radius:var(--radius-xl);overflow:hidden;background:var(--ivory);border:1px solid rgba(112,45,66,0.08);transition:all var(--duration-normal);text-decoration:none" class="hover-lift">
+          <div style="overflow:hidden;height:100%"><img src="assets/images/suit_blue.jpg" alt="Man in tailored blue check suit" style="width:100%;height:100%;object-fit:cover;min-height:100px" loading="lazy"></div>
+          <div style="padding:1rem"><div style="font-size:.625rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Menswear</div><div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--charcoal);line-height:1.4;margin-bottom:.5rem">Your First Bespoke Suit: What to Expect</div><div style="font-size:.75rem;color:var(--charcoal-light)">Priya N. · 6 min read</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 2: CATEGORY FILTER + GRID ═══════ -->
+<section class="section-sm" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">All Articles</div>
+      <h2 class="section-title">Our Latest <em style="color:var(--burgundy)">Stories</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All Topics</button>
+      <button class="filter-btn" data-filter="bridal">Bridal</button>
+      <button class="filter-btn" data-filter="fabric">Fabric & Care</button>
+      <button class="filter-btn" data-filter="style">Style Tips</button>
+      <button class="filter-btn" data-filter="ethnic">Ethnic Wear</button>
+      <button class="filter-btn" data-filter="men">Menswear</button>
+    </div>
+    <div style="text-align:center;font-size:.85rem;color:var(--charcoal-light);margin-bottom:1.5rem" class="reveal"><span data-filter-count>6 articles</span> · click a topic to filter</div>
+    <div class="grid-3" id="blogGrid">
+      <div class="post-card reveal reveal-delay-1" data-category="bridal">
+        <div class="post-card-img"><img src="assets/images/bridal_lehenga_editorial.jpg" alt="Bridal lehenga editorial look" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Bridal Guide</div>
+          <h3 class="post-title"><a href="blog-detail.html">5 Lehenga Styles That Never Go Out of Fashion</a></h3>
+          <p class="post-excerpt">From A-line to fish-cut, we break down the timeless lehenga silhouettes that flatter every body type.</p>
+          <div class="post-meta"><div class="post-avatar">P</div><span>Priya Nair</span><span>·</span><span>Oct 10, 2026</span><span>·</span><span>7 min</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal reveal-delay-2" data-category="fabric">
+        <div class="post-card-img"><img src="assets/images/silk_saree_kanchipuram.jpg" alt="Kanchipuram silk saree with zari border" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Fabric & Care</div>
+          <h3 class="post-title"><a href="blog-detail.html">The Complete Guide to Silk Fabric Care at Home</a></h3>
+          <p class="post-excerpt">Washing, storing, ironing and reviving silk garments — expert tips to make your silk last a lifetime.</p>
+          <div class="post-meta"><div class="post-avatar">V</div><span>Vikram Sharma</span><span>·</span><span>Oct 5, 2026</span><span>·</span><span>5 min</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal reveal-delay-3" data-category="style">
+        <div class="post-card-img"><img src="assets/images/boutique_browsing.jpg" alt="Browsing curated garments on boutique rail" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Style Tips</div>
+          <h3 class="post-title"><a href="blog-detail.html">How to Build a Capsule Ethnic Wardrobe</a></h3>
+          <p class="post-excerpt">10 essential pieces every Indian woman needs for every occasion — from office to wedding season.</p>
+          <div class="post-meta"><div class="post-avatar">M</div><span>Meera K.</span><span>·</span><span>Sept 28, 2026</span><span>·</span><span>6 min</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal reveal-delay-1" data-category="ethnic">
+        <div class="post-card-img"><img src="assets/images/anarkali_top.jpg" alt="Blush pink ruffle top with ethnic detailing" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Ethnic Wear</div>
+          <h3 class="post-title"><a href="blog-detail.html">Anarkali vs Salwar Kameez: Which Suits Your Body?</a></h3>
+          <p class="post-excerpt">A practical guide to choosing between Indian outfit styles based on body type and occasion.</p>
+          <div class="post-meta"><div class="post-avatar">P</div><span>Priya Nair</span><span>·</span><span>Sept 20, 2026</span><span>·</span><span>5 min</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal reveal-delay-2" data-category="men">
+        <div class="post-card-img"><img src="assets/images/suit_fitting.jpg" alt="Final fitting of a tailored suit" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Menswear</div>
+          <h3 class="post-title"><a href="blog-detail.html">How a Perfectly Fitted Suit Can Change Your Career</a></h3>
+          <p class="post-excerpt">The psychology of dressing well — why bespoke menswear isn't a luxury but a professional investment.</p>
+          <div class="post-meta"><div class="post-avatar">V</div><span>Vikram Sharma</span><span>·</span><span>Sept 15, 2026</span><span>·</span><span>8 min</span></div>
+        </div>
+      </div>
+      <div class="post-card reveal reveal-delay-3" data-category="bridal">
+        <div class="post-card-img"><img src="assets/images/suit_career.jpg" alt="Confident professional in tailored suit" loading="lazy"></div>
+        <div class="post-card-body">
+          <div class="post-cat">Bridal Guide</div>
+          <h3 class="post-title"><a href="blog-detail.html">When to Start Shopping for Your Bridal Wardrobe</a></h3>
+          <p class="post-excerpt">A month-by-month timeline for brides-to-be on outfit shopping, fittings and final preparations.</p>
+          <div class="post-meta"><div class="post-avatar">M</div><span>Meera K.</span><span>·</span><span>Sept 8, 2026</span><span>·</span><span>6 min</span></div>
+        </div>
+      </div>
+      <div class="filter-empty">No articles found in this topic. Try another filter.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 3: SIDEBAR LAYOUT (Blog list + Sidebar) ═══════ -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:start">
+      <div>
+        <div class="section-eyebrow" style="justify-content:flex-start">Trending Now</div>
+        <h2 class="section-title" style="text-align:left;margin-bottom:2rem">Popular <em style="color:var(--burgundy)">Articles</em></h2>
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div class="why-card reveal">
+            <div style="font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--burgundy);line-height:1;flex-shrink:0;width:48px;text-align:center">1</div>
+            <div><div style="font-size:.6875rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Fabric Care</div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.375rem"><a href="blog-detail.html" style="color:inherit">How to Wash and Store Banarasi Silk Sarees</a></h4><div style="font-size:.8125rem;color:var(--charcoal-light)">12,450 reads · 5 min</div></div>
+          </div>
+          <div class="why-card reveal">
+            <div style="font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--burgundy);line-height:1;flex-shrink:0;width:48px;text-align:center">2</div>
+            <div><div style="font-size:.6875rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Bridal Guide</div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.375rem"><a href="blog-detail.html" style="color:inherit">Choosing Between Silk, Net and Velvet for Your Bridal Lehenga</a></h4><div style="font-size:.8125rem;color:var(--charcoal-light)">9,820 reads · 7 min</div></div>
+          </div>
+          <div class="why-card reveal">
+            <div style="font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--burgundy);line-height:1;flex-shrink:0;width:48px;text-align:center">3</div>
+            <div><div style="font-size:.6875rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);font-weight:700;margin-bottom:.375rem">Style Tips</div><h4 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:.375rem"><a href="blog-detail.html" style="color:inherit">7 Outfit Mistakes to Avoid at Indian Weddings</a></h4><div style="font-size:.8125rem;color:var(--charcoal-light)">8,640 reads · 4 min</div></div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="newsletter-box reveal">
+          <div style="font-size:2rem;margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:.625rem">Style in Your Inbox</h3>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:1.5rem">Weekly fashion tips, fabric care guides and exclusive offers — only for subscribers.</p>
+          <input type="email" placeholder="Enter your email" style="width:100%;padding:.875rem 1.25rem;border-radius:var(--radius-md);border:none;margin-bottom:.75rem;font-family:var(--font-sans);font-size:.9rem">
+          <button class="btn btn-champagne" style="width:100%;justify-content:center" onclick="showToast('Welcome to the Élite newsletter!','success')">Subscribe Free <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+        <div style="margin-top:1.5rem;padding:1.5rem;background:var(--ivory);border-radius:var(--radius-xl);border:1px solid rgba(112,45,66,0.08)" class="reveal">
+          <div style="font-weight:700;color:var(--charcoal);margin-bottom:1rem;font-family:var(--font-serif)">Browse Topics</div>
+          <div class="tag-cloud">
+            <span class="tag">#BridalWear</span><span class="tag">#SilkCare</span><span class="tag">#Anarkali</span><span class="tag">#BlouseDesign</span><span class="tag">#Bespoke</span><span class="tag">#Alterations</span><span class="tag">#WeddingStyle</span><span class="tag">#Menswear</span><span class="tag">#FabricGuide</span><span class="tag">#EthnicWear</span><span class="tag">#Kanchipuram</span><span class="tag">#SuratFabric</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;padding:1.5rem;background:var(--burgundy);border-radius:var(--radius-xl);text-align:center" class="reveal">
+          <div style="font-size:1.5rem;margin-bottom:.75rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:white;margin-bottom:.5rem">Talk to a Tailor</div>
+          <p style="font-size:.8125rem;color:rgba(255,255,255,0.75);margin-bottom:1rem">Have a styling question? Our team is happy to help.</p>
+          <a href="contact.html" class="btn btn-champagne btn-sm" style="width:100%;justify-content:center">Book Consultation</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 4: AUTHOR SPOTLIGHT ═══════ -->
+<section class="section" style="background:var(--ivory-dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Meet the Writers</div>
+      <h2 class="section-title">Our Expert <em style="color:var(--burgundy)">Contributors</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="grid-3">
+      <div class="testimonial-card reveal reveal-delay-1" style="text-align:center">
+        <img class="writer-avatar" src="assets/images/ethnic_saree_pink.jpg" alt="Priya Nair, Founder and Master Tailor" loading="lazy" style="object-position:50% 20%">
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--charcoal)">Priya Nair</div>
+        <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-rose);margin:.375rem 0 .875rem;font-weight:600">Founder & Master Tailor</div>
+        <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.75">Shares her 25+ years of tailoring expertise through in-depth articles on bespoke crafting, bridal planning and fabric artistry.</p>
+        <div style="margin-top:1rem;font-size:.8125rem;color:var(--burgundy);font-weight:600">42 Articles Published</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2" style="text-align:center">
+        <img class="writer-avatar" src="assets/images/suit_career.jpg" alt="Vikram Sharma, Menswear Specialist" loading="lazy" style="object-position:50% 20%">
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--charcoal)">Vikram Sharma</div>
+        <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-rose);margin:.375rem 0 .875rem;font-weight:600">Menswear Specialist</div>
+        <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.75">Expert voice on men's tailoring, suit fitting, fabric selection for corporate wear and Indian formal dressing.</p>
+        <div style="margin-top:1rem;font-size:.8125rem;color:var(--burgundy);font-weight:600">28 Articles Published</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3" style="text-align:center">
+        <img class="writer-avatar" src="assets/images/blouse_evening.jpg" alt="Meera Krishnamurthy, Embroidery and Ethnic Expert" loading="lazy" style="object-position:50% 15%">
+        <div style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--charcoal)">Meera Krishnamurthy</div>
+        <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-rose);margin:.375rem 0 .875rem;font-weight:600">Embroidery & Ethnic Expert</div>
+        <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.75">Writes passionately about Indian textile heritage, regional embroidery traditions, ethnic styling and blouse design.</p>
+        <div style="margin-top:1rem;font-size:.8125rem;color:var(--burgundy);font-weight:600">35 Articles Published</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 5: NEWSLETTER ═══════ -->
+<section class="section" style="background:linear-gradient(135deg,var(--charcoal),var(--burgundy-dark))">
+  <div class="container" style="text-align:center;max-width:680px">
+    <div class="reveal">
+      <div class="hero-badge" style="display:inline-flex;margin-bottom:1.5rem"><svg class="icon" style="width:.9em;height:.9em;vertical-align:-0.1em;margin:0 .3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Join 8,000+ Subscribers</div>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;color:white;margin-bottom:1rem">Get Fashion Wisdom <em style="color:var(--champagne)">Weekly</em></h2>
+      <p style="font-size:.9375rem;color:rgba(250,246,240,.8);margin-bottom:2rem;line-height:1.8">Join our community of style-conscious readers. Receive expert tailoring tips, exclusive discounts and new collection launches — every Tuesday.</p>
+      <form style="display:flex;gap:.75rem;max-width:480px;margin:0 auto" data-validate>
+        <input type="email" placeholder="your@email.com" required class="form-control" style="flex:1;background:rgba(250,246,240,.1);color:white;border-color:rgba(250,246,240,.2)">
+        <button type="submit" class="btn btn-champagne" style="flex-shrink:0">Subscribe <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </form>
+      <p style="font-size:.75rem;color:rgba(250,246,240,.78);margin-top:1rem">No spam. Unsubscribe anytime. Your privacy is respected.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem" class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Maison <span>Élite</span></div>
+        <p class="footer-desc">Where every stitch tells your story. Premium custom tailoring and bespoke stitching crafted with generations of artistry.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Home</a></li>
+          <li><a href="home2.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Niche Styles</a></li>
+          <li><a href="about.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> About Us</a></li>
+          <li><a href="services.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Services</a></li>
+          <li><a href="blog.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blog</a></li>
+          <li><a href="contact.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-detail.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bespoke Tailoring</a></li>
+          <li><a href="service-detail.html#bridal" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bridal Wear</a></li>
+          <li><a href="service-detail.html#blouse" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blouse Stitching</a></li>
+          <li><a href="service-detail.html#alterations" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Alterations</a></li>
+          <li><a href="home2.html#ethnic" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Ethnic Wear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Visit Us</div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div>12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div>+91 98765 43210</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div><div>hello@maisonelite.in</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div>Mon–Sat: 10am – 8pm</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(250,246,240,0.5)">© 2026 Maison Élite. All rights reserved. Crafted with <svg class="icon" style="width:1em;height:1em;vertical-align:-0.12em;margin:0 .2rem" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> in India.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="login.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Login</a>
+        <a href="coming-soon.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Coming Soon</a>
+        <a href="404.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">404</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="alert"></div>
+<button class="scroll-to-top" aria-label="Scroll to top"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

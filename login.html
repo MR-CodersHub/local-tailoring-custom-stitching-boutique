@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Login or Register to Maison Élite – Access your appointments, saved measurements and order history. New clients can create an account easily.">
+<title>Login | Maison Élite – My Account</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+  .auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .auth-visual {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--burgundy-dark) 50%, var(--burgundy) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    min-height: 100vh;
+  }
+  .auth-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+  }
+  .auth-visual-content { position: relative; z-index: 1; }
+  .auth-form-side {
+    background: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+  }
+  .auth-form-wrap { width: 100%; max-width: 420px; }
+  .auth-tabs { display: flex; background: rgba(112,45,66,0.06); border-radius: var(--radius-lg); padding: 4px; margin-bottom: 2rem; }
+  .auth-tab { flex: 1; padding: .75rem; text-align: center; font-size: .875rem; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; border: none; background: transparent; font-family: var(--font-sans); color: var(--charcoal-light); transition: all var(--duration-fast); }
+  .auth-tab.active { background: var(--burgundy); color: white; box-shadow: var(--shadow-sm); }
+  .auth-panel { display: none; }
+  .auth-panel.active { display: block; }
+  .or-divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
+  .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: rgba(112,45,66,0.15); }
+  .or-divider span { font-size: .75rem; color: var(--charcoal-light); font-weight: 600; }
+  .social-auth-btn { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: .875rem; border: 1.5px solid rgba(112,45,66,0.15); border-radius: var(--radius-lg); font-size: .875rem; font-weight: 600; cursor: pointer; width: 100%; background: var(--ivory); font-family: var(--font-sans); transition: all var(--duration-fast); color: var(--charcoal); }
+  .social-auth-btn:hover { background: rgba(112,45,66,0.04); border-color: var(--burgundy); }
+  .password-toggle { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--charcoal-light); font-size: .875rem; }
+  .input-with-icon { position: relative; }
+  .auth-logo { display: inline-flex; align-items: center; gap: .75rem; margin-bottom: 3rem; text-decoration: none; line-height: 1; }
+  .auth-logo-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(250,246,240,0.15); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .auth-logo-text { font-family: var(--font-serif); font-size: 1.375rem; font-weight: 700; color: white; line-height: 1; display: inline-flex; align-items: baseline; gap: .35rem; }
+  .strength-bar { height: 4px; border-radius: 2px; background: rgba(112,45,66,0.1); margin-top: .5rem; overflow: hidden; }
+  .strength-fill { height: 100%; border-radius: 2px; transition: width var(--duration-normal); }
+  @media(max-width:768px) { .auth-page { grid-template-columns: 1fr; } .auth-visual { display: none; } }
+</style>
+</head>
+<body>
+
+<div style="position:fixed;top:1.5rem;right:1.5rem;z-index:100;display:flex;gap:.5rem">
+  <button class="theme-toggle" aria-label="Toggle dark mode" style="background:rgba(112,45,66,.1);color:var(--charcoal)"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+  <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL" style="background:rgba(112,45,66,.1);color:var(--charcoal)"><span class="rtl-text">RTL</span></button>
+</div>
+
+<div class="auth-page">
+  <!-- VISUAL PANEL -->
+  <div class="auth-visual">
+    <img src="assets/images/boutique_store.jpg" alt="Maison Elite menswear boutique interior" loading="lazy">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(41,37,42,0.7),rgba(112,45,66,0.5))"></div>
+    <div class="auth-visual-content">
+      <a href="index.html" class="auth-logo" aria-label="Maison Élite — back to home">
+        <span class="auth-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <span class="auth-logo-text">Maison <span style="color:var(--champagne)">Élite</span></span>
+      </a>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,3vw,2.75rem);font-weight:700;color:white;margin-bottom:1rem;line-height:1.3">Your Personal <em style="color:var(--champagne)">Fitting Room</em> Awaits</h2>
+      <p style="font-size:.9375rem;color:rgba(250,246,240,.8);line-height:1.85;margin-bottom:2.5rem">Sign in to access your saved measurements, appointment history, order tracking and exclusive member discounts — all in one place.</p>
+      <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:2.5rem">
+        <div style="display:flex;gap:.875rem;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--champagne)"></div><div style="font-size:.875rem;color:rgba(250,246,240,.8)">Track all your orders and fittings in one place</div></div>
+        <div style="display:flex;gap:.875rem;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--champagne)"></div><div style="font-size:.875rem;color:rgba(250,246,240,.8)">Saved measurements for faster reorders</div></div>
+        <div style="display:flex;gap:.875rem;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--champagne)"></div><div style="font-size:.875rem;color:rgba(250,246,240,.8)">Exclusive member discounts and early access</div></div>
+        <div style="display:flex;gap:.875rem;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--champagne)"></div><div style="font-size:.875rem;color:rgba(250,246,240,.8)">Style history and wishlist management</div></div>
+      </div>
+      <div style="padding:1.5rem;background:rgba(250,246,240,.08);border-radius:var(--radius-xl);border:1px solid rgba(250,246,240,.1)">
+        <div class="testimonial-stars" style="margin-bottom:.75rem"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span></div>
+        <p style="font-size:.875rem;color:rgba(250,246,240,.85);line-height:1.7;font-style:italic;margin-bottom:.75rem">"The client portal is incredible — I can see every outfit I've ever ordered, my measurements are always saved, and booking a new fitting takes 30 seconds."</p>
+        <div style="font-weight:700;color:var(--champagne);font-size:.8125rem">— Ananya Shah, Client since 2021</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM PANEL -->
+  <div class="auth-form-side">
+    <div class="auth-form-wrap">
+      <div style="margin-bottom:2rem">
+        <h1 style="font-family:var(--font-serif);font-size:1.875rem;font-weight:700;color:var(--charcoal);margin-bottom:.375rem">Welcome Back</h1>
+        <p style="font-size:.875rem;color:var(--charcoal-light)">Sign in to your account or create a new one</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">Sign In</button>
+        <button class="auth-tab" id="registerTab" onclick="switchTab('register')">Create Account</button>
+      </div>
+
+      <!-- LOGIN PANEL -->
+      <div class="auth-panel active" id="loginPanel">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
+          <button type="button" class="social-auth-btn" onclick="handleSocialAuth('Google')"><span><svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.5-6.5C35.5 2.7 30 1 24 1 14.6 1 6.4 6.4 2.7 14.1l7.7 6c1.9-5.7 7-10.6 13.6-10.6z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-2.8-.4-4H24v8.1h12.6c-.5 2.7-2.1 4.9-4.4 6.4l7.6 5.9c4.5-4.1 6.3-10.1 6.3-16.4z"/><path fill="#FBBC05" d="M10.4 28.2c-.6-1.7-.9-3.5-.9-5.2s.3-3.5.9-5.2l-7.7-6C1 15.2 0 19.4 0 23s1 7.8 2.7 11.2l7.7-6z"/><path fill="#34A853" d="M24 47c6 0 11-2 14.6-5.3l-7.6-5.9c-2.1 1.4-4.8 2.2-7 2.2-5.4 0-10-3.4-11.6-8.2l-7.7 6C6.4 41.6 14.6 47 24 47z"/></svg></span> Google</button>
+          <button type="button" class="social-auth-btn" onclick="handleSocialAuth('Facebook')"><span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg></span> Facebook</button>
+        </div>
+        <div class="or-divider"><span>or continue with email</span></div>
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-control" placeholder="your@email.com" required autocomplete="email">
+            <div class="form-error">Please enter a valid email</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display:flex;justify-content:space-between"><span>Password *</span><a href="#" style="font-size:.8125rem;color:var(--burgundy)">Forgot Password?</a></label>
+            <div class="input-with-icon">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="password-toggle" onclick="togglePass('loginPassword',this)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+            <div class="form-error">Password is required</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1.5rem">
+            <input type="checkbox" id="remember" style="width:16px;height:16px;accent-color:var(--burgundy)">
+            <label for="remember" style="font-size:.8125rem;color:var(--charcoal-light);cursor:pointer">Keep me signed in for 30 days</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem">Sign In to My Account <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </form>
+        <p style="text-align:center;font-size:.8125rem;color:var(--charcoal-light);margin-top:1.5rem">Don't have an account? <button onclick="switchTab('register')" style="background:none;border:none;color:var(--burgundy);font-weight:700;cursor:pointer;font-family:inherit">Create one free <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></p>
+      </div>
+
+      <!-- REGISTER PANEL -->
+      <div class="auth-panel" id="registerPanel">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
+          <button type="button" class="social-auth-btn" onclick="handleSocialAuth('Google')"><span><svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.5-6.5C35.5 2.7 30 1 24 1 14.6 1 6.4 6.4 2.7 14.1l7.7 6c1.9-5.7 7-10.6 13.6-10.6z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-2.8-.4-4H24v8.1h12.6c-.5 2.7-2.1 4.9-4.4 6.4l7.6 5.9c4.5-4.1 6.3-10.1 6.3-16.4z"/><path fill="#FBBC05" d="M10.4 28.2c-.6-1.7-.9-3.5-.9-5.2s.3-3.5.9-5.2l-7.7-6C1 15.2 0 19.4 0 23s1 7.8 2.7 11.2l7.7-6z"/><path fill="#34A853" d="M24 47c6 0 11-2 14.6-5.3l-7.6-5.9c-2.1 1.4-4.8 2.2-7 2.2-5.4 0-10-3.4-11.6-8.2l-7.7 6C6.4 41.6 14.6 47 24 47z"/></svg></span> Google</button>
+          <button type="button" class="social-auth-btn" onclick="handleSocialAuth('Facebook')"><span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg></span> Facebook</button>
+        </div>
+        <div class="or-divider"><span>or create with email</span></div>
+        <form id="registerForm" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+            <div class="form-group">
+              <label class="form-label">First Name *</label>
+              <input type="text" class="form-control" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name *</label>
+              <input type="text" class="form-control" placeholder="Last name" required autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-control" placeholder="your@email.com" required autocomplete="email">
+            <div class="form-error">Please enter a valid email</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" placeholder="+91 98765 43210" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <div class="input-with-icon">
+              <input type="password" id="regPassword" class="form-control" placeholder="Min. 8 characters" required oninput="updateStrength(this.value)" autocomplete="new-password">
+              <button type="button" class="password-toggle" onclick="togglePass('regPassword',this)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill" style="width:0;background:var(--burgundy)"></div></div>
+            <div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem" id="strengthLabel">Enter a password</div>
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:.625rem">
+            <input type="checkbox" id="terms" style="width:16px;height:16px;accent-color:var(--burgundy);margin-top:3px;flex-shrink:0" required>
+            <label for="terms" style="font-size:.8125rem;color:var(--charcoal-light);cursor:pointer">I agree to the <a href="#" style="color:var(--burgundy)">Terms of Service</a> and <a href="#" style="color:var(--burgundy)">Privacy Policy</a> of Maison Élite.</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem">Create My Account <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </form>
+        <p style="text-align:center;font-size:.8125rem;color:var(--charcoal-light);margin-top:1.5rem">Already have an account? <button onclick="switchTab('login')" style="background:none;border:none;color:var(--burgundy);font-weight:700;cursor:pointer;font-family:inherit">Sign in <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></p>
+      </div>
+
+      <p style="text-align:center;font-size:.75rem;color:var(--charcoal-light);margin-top:2rem;line-height:1.6">Your account is protected with 256-bit SSL encryption. Maison Élite never shares your personal information with third parties.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" role="alert"></div>
+<script src="assets/js/main.js"></script>
+<script>
+  function switchTab(tab) {
+    document.getElementById('loginTab').classList.toggle('active', tab === 'login');
+    document.getElementById('registerTab').classList.toggle('active', tab === 'register');
+    document.getElementById('loginPanel').classList.toggle('active', tab === 'login');
+    document.getElementById('registerPanel').classList.toggle('active', tab === 'register');
+  }
+  const ICON_EYE = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+  const ICON_EYE_OFF = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+  function togglePass(id, btn) {
+    const input = document.getElementById(id);
+    if (input.type === 'password') { input.type = 'text'; btn.innerHTML = ICON_EYE_OFF; }
+    else { input.type = 'password'; btn.innerHTML = ICON_EYE; }
+  }
+  function updateStrength(val) {
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    const fill = document.getElementById('strengthFill');
+    const label = document.getElementById('strengthLabel');
+    const pct = ['0%','25%','50%','75%','100%'][score];
+    const colours = ['','#e53e3e','#ed8936','#48bb78','#38a169'];
+    const labels = ['Enter a password','Weak','Fair','Good','Strong'];
+    fill.style.width = pct;
+    fill.style.background = colours[score];
+    label.textContent = labels[score];
+    label.style.color = colours[score] || 'var(--charcoal-light)';
+  }
+  var HOME_URL = 'index.html';
+  function goHome(msg) {
+    if (typeof showToast === 'function' && msg) showToast(msg, 'success');
+    setTimeout(function(){ window.location.href = HOME_URL; }, 900);
+  }
+  function handleSocialAuth(provider) {
+    goHome(provider + ' sign-in successful! Taking you home…');
+  }
+  function wireAuthForm(id, successMsg) {
+    var form = document.getElementById(id);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function(field) {
+        var err = field.closest('.form-group') ? field.closest('.form-group').querySelector('.form-error') : null;
+        var empty = !field.value || !field.value.trim();
+        var badEmail = field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+        if ((field.type === 'checkbox' && !field.checked) || empty || badEmail) {
+          valid = false;
+          field.classList.add('is-invalid');
+          if (err) err.classList.add('visible');
+        } else {
+          field.classList.remove('is-invalid');
+          if (err) err.classList.remove('visible');
+        }
+      });
+      if (!valid) return;
+      form.reset();
+      goHome(successMsg);
+    });
+  }
+  wireAuthForm('loginForm', 'Welcome back! Taking you home…');
+  wireAuthForm('registerForm', 'Account created! Taking you home…');
+</script>
+</body>
+</html>

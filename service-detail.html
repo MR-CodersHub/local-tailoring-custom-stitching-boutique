@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bespoke Tailoring Service Details – Complete guide to Maison Élite's custom fitting, alterations, blouse stitching and measurement process.">
+<title>Service Details | Maison Élite – Bespoke Tailoring Process</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+<meta name="theme-color" content="#702D42">
+<style>
+  .detail-sidebar {
+    position: sticky;
+    top: calc(var(--navbar-height) + 1.5rem);
+  }
+  .service-nav {
+    background: var(--ivory);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    border: 1px solid rgba(112,45,66,0.08);
+    box-shadow: var(--shadow-sm);
+  }
+  .service-nav-title {
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    background: var(--burgundy);
+    padding: .625rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+  }
+  .service-nav-link {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .75rem 1rem;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-fast);
+    border-left: 3px solid transparent;
+  }
+  .service-nav-link:hover, .service-nav-link.active {
+    background: rgba(112,45,66,0.06);
+    color: var(--burgundy);
+    border-left-color: var(--burgundy);
+  }
+  .service-detail-section {
+    scroll-margin-top: 100px;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(112,45,66,0.08);
+  }
+  .service-detail-section:last-child { border-bottom: none; }
+  .detail-img {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 380px;
+  }
+  .detail-img img { width:100%;height:100%;object-fit:cover; }
+  .step-card {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--ivory);
+    border: 1px solid rgba(112,45,66,0.08);
+    transition: all var(--duration-fast);
+    margin-bottom: .75rem;
+  }
+  .step-card:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .875rem;
+    flex-shrink: 0;
+  }
+  .measure-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .measure-item {
+    text-align: center;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: rgba(112,45,66,0.04);
+    border: 1px solid rgba(112,45,66,0.1);
+  }
+  .measure-icon { font-size: 1.75rem; margin-bottom: .5rem; }
+  @media(max-width:991px) {
+    .detail-layout { grid-template-columns: 1fr !important; }
+    .detail-sidebar { position: static; }
+    .measure-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media(max-width:576px) { .measure-grid { grid-template-columns: repeat(2,1fr); } }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="navbar-logo">Maison <span>Élite</span></div>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Niche Styles</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link active">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
+      <button class="rtl-toggle" aria-label="Switch to RTL (right-to-left)" data-label="RTL"><span class="rtl-text">RTL</span></button>
+      <a href="login.html" class="nav-login"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="navbar-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo" style="color:var(--charcoal)">Maison <span>Élite</span></div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-nav-link">Home <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="home2.html" class="mobile-nav-link">Niche Styles <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="about.html" class="mobile-nav-link">About Us <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="services.html" class="mobile-nav-link">Services <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="blog.html" class="mobile-nav-link">Blog <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="contact.html" class="mobile-nav-link">Contact <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+    <li><a href="login.html" class="mobile-nav-link">Login / Register <span><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></li>
+  </ul>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Appointment</a><a href="login.html" class="btn btn-secondary" style="width:100%;justify-content:center">Login / Register</a></div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"><img src="assets/images/fabric_collection.jpg" alt="Premium fabric collection in atelier" loading="eager"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <h1 class="page-hero-title">Inside Our <em style="color:var(--champagne)">Craft</em></h1>
+      <p class="page-hero-subtitle">A detailed guide to every service we offer — our process, techniques, timelines and what to expect.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start" class="detail-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="detail-sidebar">
+        <div class="service-nav">
+          <div class="service-nav-title">Our Services</div>
+          <a href="#bespoke" class="service-nav-link active"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> Bespoke Tailoring</a>
+          <a href="#bridal" class="service-nav-link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="m9.5 8.5-3-4.5 3.5 1.5L12 3l2 2.5L17.5 4l-3 4.5"/></svg> Bridal Couture</a>
+          <a href="#blouse" class="service-nav-link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg> Blouse Stitching</a>
+          <a href="#alterations" class="service-nav-link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg> Alterations</a>
+          <a href="#measurement" class="service-nav-link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg> Measurement Guide</a>
+          <a href="#ethnic" class="service-nav-link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Ethnic Wear</a>
+        </div>
+        <div style="margin-top:1.5rem;padding:1.5rem;background:var(--burgundy);border-radius:var(--radius-xl);color:white;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:.75rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:1rem;font-weight:700;margin-bottom:.5rem">Need Help?</div>
+          <div style="font-size:.8rem;opacity:.8;margin-bottom:1rem">Talk to our tailor directly</div>
+          <a href="tel:+919876543210" class="btn btn-champagne btn-sm" style="width:100%;justify-content:center">Call Now</a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div>
+
+        <!-- BESPOKE -->
+        <div class="service-detail-section" id="bespoke">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;margin-bottom:2rem">
+            <div>
+              <span class="badge badge-burgundy" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> Signature Service</span>
+              <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Bespoke Tailoring</h2>
+              <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.25rem">The art of bespoke tailoring begins with understanding <em>you</em>. Unlike made-to-measure, bespoke means your garment is built from a blank slate — no standard patterns, no shortcuts.</p>
+              <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light)">Every seam is individually placed, every dart is calculated for your unique posture, and every detail is your choice — fabric, lining, buttons, embellishments.</p>
+            </div>
+            <div class="detail-img"><img src="assets/images/bespoke_essentials.jpg" alt="Everyday bespoke wardrobe essentials flatlay" loading="lazy"></div>
+          </div>
+          <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--charcoal);margin-bottom:1.25rem">The Bespoke Process</h3>
+          <div class="step-card"><div class="step-num">1</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">Style Consultation (60 min)</div><div style="font-size:.875rem;color:var(--charcoal-light)">Review inspiration references, discuss occasion, lifestyle, fabric preferences and design goals with your dedicated consultant.</div></div></div>
+          <div class="step-card"><div class="step-num">2</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">20-Point Measurement Session</div><div style="font-size:.875rem;color:var(--charcoal-light)">Our senior tailor takes comprehensive measurements covering bust, waist, hip, shoulder slope, armscye, back width and 14 more critical points.</div></div></div>
+          <div class="step-card"><div class="step-num">3</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">Pattern Drafting & Toile</div><div style="font-size:.875rem;color:var(--charcoal-light)">A personal pattern block is drafted. A test garment (toile) in muslin is fitted first to identify any adjustments before cutting your chosen fabric.</div></div></div>
+          <div class="step-card"><div class="step-num">4</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">Primary Cutting & Stitching</div><div style="font-size:.875rem;color:var(--charcoal-light)">The actual fabric is cut and hand-stitched by the same master tailor throughout, ensuring consistent craftsmanship.</div></div></div>
+          <div class="step-card"><div class="step-num">5</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">Fitting Sessions (2–3)</div><div style="font-size:.875rem;color:var(--charcoal-light)">You try the garment at each stage, and adjustments are made in real-time to achieve a flawless fit.</div></div></div>
+          <div class="step-card"><div class="step-num">6</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:.25rem">Final Finishing & Delivery</div><div style="font-size:.875rem;color:var(--charcoal-light)">Hand-finishing, pressing, steaming and packaging. Your garment is delivered in our signature box with a garment care card.</div></div></div>
+          <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
+            <div style="padding:.875rem 1.5rem;background:rgba(112,45,66,0.06);border-radius:var(--radius-md);font-size:.875rem"><strong>Timeline:</strong> 10–21 days</div>
+            <div style="padding:.875rem 1.5rem;background:rgba(112,45,66,0.06);border-radius:var(--radius-md);font-size:.875rem"><strong>Starting from:</strong> ₹2,500</div>
+            <div style="padding:.875rem 1.5rem;background:rgba(112,45,66,0.06);border-radius:var(--radius-md);font-size:.875rem"><strong>Fittings:</strong> 2–3 included</div>
+          </div>
+        </div>
+
+        <!-- BRIDAL -->
+        <div class="service-detail-section" id="bridal">
+          <div style="margin-bottom:2rem">
+            <span class="badge badge-rose" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="m9.5 8.5-3-4.5 3.5 1.5L12 3l2 2.5L17.5 4l-3 4.5"/></svg> Most Requested</span>
+            <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Bridal Couture</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+              <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light)">Your wedding garments are the most precious in your lifetime. Our dedicated bridal team creates breathtaking lehengas, sarees, gowns and sherwanis that honour the gravity of the occasion.</p>
+              <div class="detail-img" style="height:260px"><img src="assets/images/bridal_couple.jpg" alt="Bridal couple sharing a moment" loading="lazy"></div>
+            </div>
+          </div>
+          <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">What's Included in the Bridal Package</h3>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+            <div style="padding:1.25rem;border-radius:var(--radius-lg);background:rgba(112,45,66,0.04);border:1px solid rgba(112,45,66,0.1)"><div style="font-weight:700;color:var(--burgundy);margin-bottom:.375rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Bridal Lehenga / Saree</div><div style="font-size:.8125rem;color:var(--charcoal-light)">Full design, fabric selection, hand embroidery and fitting</div></div>
+            <div style="padding:1.25rem;border-radius:var(--radius-lg);background:rgba(112,45,66,0.04);border:1px solid rgba(112,45,66,0.1)"><div style="font-weight:700;color:var(--burgundy);margin-bottom:.375rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg> Designer Blouse</div><div style="font-size:.8125rem;color:var(--charcoal-light)">Custom back design, embellishments and precise fitting</div></div>
+            <div style="padding:1.25rem;border-radius:var(--radius-lg);background:rgba(112,45,66,0.04);border:1px solid rgba(112,45,66,0.1)"><div style="font-weight:700;color:var(--burgundy);margin-bottom:.375rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9l4-6z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg> Engagement Outfit</div><div style="font-size:.8125rem;color:var(--charcoal-light)">Separate look for your ring ceremony or reception</div></div>
+            <div style="padding:1.25rem;border-radius:var(--radius-lg);background:rgba(112,45,66,0.04);border:1px solid rgba(112,45,66,0.1)"><div style="font-weight:700;color:var(--burgundy);margin-bottom:.375rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Mehndi / Sangeet Dress</div><div style="font-size:.8125rem;color:var(--charcoal-light)">Vibrant festive wear for pre-wedding celebrations</div></div>
+          </div>
+          <div style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(112,45,66,0.06),rgba(197,143,157,0.08));border-radius:var(--radius-xl);border:1px solid rgba(112,45,66,0.1)">
+            <div style="font-weight:700;color:var(--burgundy);margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg> Bridal Tip from Our Team</div>
+            <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7">Book your bridal appointment at least 3–4 months before your wedding. Heavily embroidered pieces with zardozi or cutwork require 6–8 weeks of handcraft time alone.</p>
+          </div>
+        </div>
+
+        <!-- BLOUSE -->
+        <div class="service-detail-section" id="blouse">
+          <span class="badge badge-champagne" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg> Design Speciality</span>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Blouse Stitching</h2>
+          <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.5rem">A beautifully crafted blouse can transform even the simplest saree into a showstopper. Our blouse specialists create every style imaginable — from elegant minimalist cuts to elaborate embroidered backs.</p>
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Popular Blouse Styles</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div><div style="font-weight:600;font-size:.875rem">Deep Back Cut</div></div>
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div><div style="font-weight:600;font-size:.875rem">Mirror Work</div></div>
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:600;font-size:.875rem">Embroidered</div></div>
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:600;font-size:.875rem">Tie-Back</div></div>
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9l4-6z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></div><div style="font-weight:600;font-size:.875rem">Stone Studded</div></div>
+            <div style="padding:1rem;background:var(--ivory);border-radius:var(--radius-md);border:1px solid rgba(112,45,66,0.1);text-align:center"><div style="font-size:1.5rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:600;font-size:.875rem">Floral Appliqué</div></div>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <div style="padding:.875rem 1.5rem;background:rgba(112,45,66,0.06);border-radius:var(--radius-md);font-size:.875rem"><strong>Starting:</strong> ₹800</div>
+            <div style="padding:.875rem 1.5rem;background:rgba(112,45,66,0.06);border-radius:var(--radius-md);font-size:.875rem"><strong>Timeline:</strong> 3–7 days</div>
+          </div>
+        </div>
+
+        <!-- ALTERATIONS -->
+        <div class="service-detail-section" id="alterations">
+          <span class="badge badge-burgundy" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg> Restoration Expert</span>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Expert Alterations</h2>
+          <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.5rem">Your favourite garment shouldn't be discarded just because your body changed or it was poorly fitted. Our alterations team breathes new life into clothes from any brand, era or style.</p>
+          <h3 style="font-family:var(--font-serif);font-size:1.125rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Alteration Services We Offer</h3>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-bottom:1.5rem">
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Taking in / letting out seams</div></div>
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Hemming trousers & skirts</div></div>
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Zip and button replacement</div></div>
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Lining repair and replacement</div></div>
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Sleeve shortening / lengthening</div></div>
+            <div style="display:flex;gap:.625rem;align-items:center;padding:.875rem;background:rgba(112,45,66,0.04);border-radius:var(--radius-md)"><span style="color:var(--burgundy);font-size:1.125rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span><div style="font-size:.875rem;font-weight:500">Invisible repairs & darning</div></div>
+          </div>
+        </div>
+
+        <!-- MEASUREMENT GUIDE -->
+        <div class="service-detail-section" id="measurement">
+          <span class="badge badge-champagne" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg> How To Measure</span>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Our Measurement Process</h2>
+          <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.75rem">Perfect fit starts with perfect measurements. Our 20-point system captures every nuance of your body to produce a garment that feels like it was grown for you.</p>
+          <div class="measure-grid" style="margin-bottom:1.75rem">
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 14-14 4 4L7 21l-4-4z"/><path d="m8.5 12.5 1.5 1.5M11.5 9.5l1.5 1.5M14.5 6.5 16 8"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Chest / Bust</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Full & high bust measurement</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Waist</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Natural waist at narrowest point</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Hip</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Full hip at widest point</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Length</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Shoulder to hem &amp; inseam</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Shoulder Width</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Across the back shoulder line</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Arm & Sleeve</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Upper arm, wrist &amp; full length</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Back Length</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">Nape of neck to waist</div></div>
+            <div class="measure-item"><div class="measure-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div><div style="font-weight:700;font-size:.875rem;color:var(--charcoal)">Thigh & Knee</div><div style="font-size:.75rem;color:var(--charcoal-light);margin-top:.25rem">For trousers &amp; lower garments</div></div>
+          </div>
+          <div style="padding:1.5rem;background:linear-gradient(135deg,rgba(112,45,66,0.06),rgba(197,143,157,0.08));border-radius:var(--radius-xl);border:1px solid rgba(112,45,66,0.1)">
+            <div style="font-weight:700;color:var(--burgundy);font-size:1rem;margin-bottom:.625rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Can't Visit Our Studio?</div>
+            <p style="font-size:.875rem;color:var(--charcoal-light);line-height:1.7;margin-bottom:1rem">We offer virtual measurement consultations via video call. Our team will guide you step-by-step through self-measurement with our professional measurement kit sent to your home.</p>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Virtual Consultation</a>
+          </div>
+        </div>
+
+        <!-- ETHNIC -->
+        <div class="service-detail-section" id="ethnic">
+          <span class="badge badge-rose" style="margin-bottom:1rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Heritage Craft</span>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Ethnic Wear Tailoring</h2>
+          <p style="font-size:.9375rem;line-height:1.9;color:var(--charcoal-light);margin-bottom:1.5rem">India's rich textile traditions deserve to be worn with pride. Our ethnic wear specialists have deep knowledge of regional styles, fabrics and techniques — from Banarasi silk to Chanderi cotton, Phulkari to Kantha.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div style="font-weight:700;font-size:.875rem">Salwar Kameez</div></div>
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:700;font-size:.875rem">Saree Draping</div></div>
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 5 4.5 4L11 4l2.5 5L18 4l4 4-2.5 12h-15L2 5z"/></svg></div><div style="font-weight:700;font-size:.875rem">Sherwani</div></div>
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9L12 3z"/><path d="M19 3v4M17 5h4"/></svg></div><div style="font-weight:700;font-size:.875rem">Anarkali</div></div>
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div><div style="font-weight:700;font-size:.875rem">Lehenga Choli</div></div>
+            <div style="padding:1.25rem;background:var(--ivory);border:1px solid rgba(112,45,66,0.1);border-radius:var(--radius-lg);text-align:center"><div style="font-size:1.75rem;margin-bottom:.5rem"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></div><div style="font-weight:700;font-size:.875rem">Dupatta Styling</div></div>
+          </div>
+          <div style="margin-top:1.75rem">
+            <a href="contact.html" class="btn btn-primary btn-lg">Book Your Fitting <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+
+      </div><!-- /MAIN CONTENT -->
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem" class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Maison <span>Élite</span></div>
+        <p class="footer-desc">Where every stitch tells your story. Premium custom tailoring and bespoke stitching crafted with generations of artistry.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-link" aria-label="Pinterest"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 20.5c.5-2 1.5-6 2-8"/><path d="M11 12.2a2.8 2.8 0 1 1 4.7 2.5c-1 1.9-3.8 1.8-4.7-.1"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Home</a></li>
+          <li><a href="home2.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Niche Styles</a></li>
+          <li><a href="about.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> About Us</a></li>
+          <li><a href="services.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Services</a></li>
+          <li><a href="blog.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blog</a></li>
+          <li><a href="contact.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-detail.html" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bespoke Tailoring</a></li>
+          <li><a href="service-detail.html#bridal" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Bridal Wear</a></li>
+          <li><a href="service-detail.html#blouse" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Blouse Stitching</a></li>
+          <li><a href="service-detail.html#alterations" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Alterations</a></li>
+          <li><a href="home2.html#ethnic" class="footer-link"><svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Ethnic Wear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Visit Us</div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div>12, Atelier Lane, Fashion District<br>Mumbai, Maharashtra 400001</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div>+91 98765 43210</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div><div>hello@maisonelite.in</div></div>
+        <div class="footer-contact-item"><div class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg></div><div>Mon–Sat: 10am – 8pm</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(250,246,240,0.5)">© 2026 Maison Élite. All rights reserved. Crafted with <svg class="icon" style="width:1em;height:1em;vertical-align:-0.12em;margin:0 .2rem" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> in India.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="login.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Login</a>
+        <a href="coming-soon.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">Coming Soon</a>
+        <a href="404.html" style="color:rgba(250,246,240,0.5);font-size:.8125rem">404</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="alert"></div>
+<button class="scroll-to-top" aria-label="Scroll to top"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="assets/js/main.js"></script>
+<script>
+  // Highlight sidebar links on scroll
+  const sections = document.querySelectorAll('.service-detail-section');
+  const navLinks = document.querySelectorAll('.service-nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
+  }, { passive: true });
+</script>
+</body>
+</html>
